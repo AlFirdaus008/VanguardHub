@@ -1,0 +1,71 @@
+/* Google Font Import - Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Mohave:ital,wght@0,300..700;1,300..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #000000;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: white;
+  text-align: center;
+}
+.container {
+  max-width: 800px;
+  padding: 20px;
+}
+h1 {
+  font-family: "Poppins", sans-serif;
+  font-size: 4rem;
+  font-weight: bold;
+  background: linear-gradient(90deg, #ff8a00, #ff3e3e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+h6 {
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+  background: linear-gradient(90deg, #1629c0, #0de7dc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 13px;
+}
+p {
+  margin-bottom: 20px;
+}
+.follow-section {
+  margin-top: 20px;
+}
+.follow-section button {
+  background: linear-gradient(-90deg, #ff3300, #d8970b);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.btn-login {
+  text-decoration: none;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: #18a4ef;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+}
