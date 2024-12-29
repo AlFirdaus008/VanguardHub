@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Management Class | Vanguard Hub</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles/management_finance.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles/home_management_class.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles/sidebars.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+  </head>
+  <body>
+    <aside class="sidebar">
+      <!-- Sidebar Header -->
+      <header class="sidebar-header">
+        <a href="#" class="header-logo">
+          <img src="/static/logo.png" alt="VanguardHub" />
+        </a>
+        <button class="toggler sidebar-toggler">
+          <span class="material-symbols-rounded">chevron_left</span>
+        </button>
+      </header>
+
+      <nav class="sidebar-nav">
+        <!-- Primary Top Navigation -->
+        <ul class="nav-list primary-nav">
+          <li class="nav-item">
+            <a href="dashboard.html" class="nav-link">
+              <span class="nav-icon material-symbols-rounded">dashboard</span>
+              <span class="nav-label">Dashboard</span>
+            </a>
+            <span class="nav-tooltip">Dashboard</span>
+          </li>
+          <li class="nav-item">
+            <a href="courses.html" class="nav-link">
+              <span class="nav-icon material-symbols-rounded">event_note</span>
+              <span class="nav-label">Courses</span>
+            </a>
+            <span class="nav-tooltip">Courses</span>
+          </li>
+          <li class="nav-item">
+            <a href="class_schedule.html" class="nav-link">
+              <span class="nav-icon material-symbols-rounded"
+                >calendar_month</span
+              >
+              <span class="nav-label">Class Schedule</span>
+            </a>
+            <span class="nav-tooltip">Class Schedule</span>
+          </li>
+          <li class="nav-item">
+            <a href="management_class.html" class="nav-link">
+              <span class="nav-icon material-symbols-rounded">analytics</span>
+              <span class="nav-label">Management Class</span>
+            </a>
+            <span class="nav-tooltip">Management Class</span>
+          </li>
+          <li class="nav-item">
+            <a href="members.html" class="nav-link">
+              <span class="nav-icon material-symbols-rounded">person</span>
+              <span class="nav-label">Members</span>
+            </a>
+            <span class="nav-tooltip">Members</span>
+          </li>
+          <li class="nav-item">
+            <a href="home_team_project.html" class="nav-link">
+              <span class="nav-icon material-symbols-rounded">group</span>
+              <span class="nav-label">Team Project</span>
+            </a>
+            <span class="nav-tooltip">Team Project</span>
+          </li>
+        </ul>
+
+        <!-- Secondary Bottom Navigation -->
+        <ul class="nav-list secondary-nav">
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <span class="nav-icon material-symbols-rounded"
+                >account_circle</span
+              >
+              <span class="nav-label">Profile</span>
+            </a>
+            <span class="nav-tooltip">Profile</span>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <span class="nav-icon material-symbols-rounded">logout</span>
+              <span class="nav-label">Logout</span>
+            </a>
+            <span class="nav-tooltip">Logout</span>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <div class="financial-management">
+      <div class="header">
+        <h1>Vanguard Finance</h1>
+      </div>
+
+      <!-- Dropdown untuk memilih bulan -->
+      <label for="month">Pilih Bulan:</label>
+      <select id="month" name="month">
+        <option value="1">Januari</option>
+        <option value="2">Februari</option>
+        <option value="3">Maret</option>
+        <option value="4">April</option>
+        <option value="5">Mei</option>
+        <option value="6">Juni</option>
+        <option value="7">Juli</option>
+        <option value="8">Agustus</option>
+        <option value="9">September</option>
+        <option value="10">Oktober</option>
+        <option value="11">November</option>
+        <option value="12">Desember</option>
+      </select>
+      <button onclick="loadData()">Tampilkan Data</button>
+
+      <!-- Form Input Transaksi -->
+      <div id="balance"></div>
+      <form id="transaction-form" action="/add_transaction" method="POST">
+        <label for="date">Tanggal:</label>
+        <input type="date" id="date" name="date" required />
+
+        <label for="name">Nama Pengeluaran/Pemasukan:</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="type">Tipe:</label>
+        <select id="type" name="type" required>
+          <option value="kredit">Kredit</option>
+          <option value="debit">Debit</option>
+        </select>
+
+        <label for="amount">Jumlah:</label>
+        <input type="number" id="amount" name="amount" required />
+
+        <label for="note">Keterangan:</label>
+        <input type="text" id="note" name="note" />
+
+        <button type="submit">Tambah Transaksi</button>
+      </form>
+
+      <!-- Tabel Pengelolaan Keuangan -->
+      <table id="finance-table">
+        <thead>
+          <tr>
+            <th>Tanggal</th>
+            <th>Nama Pengeluaran/Pemasukan</th>
+            <th>Tipe</th>
+            <th>Jumlah</th>
+            <th>Catatan</th>
+            <th>Saldo</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Data transaksi akan muncul di sini -->
+        </tbody>
+      </table>
+
+      <!-- Button untuk Download PDF -->
+      <button id="download-pdf">Download Laporan PDF</button>
+
+      <!-- Card Container -->
+      <div class="body-mounth">
+        <div class="header">
+          <h1>Vanguard's Fund per Month</h1>
+        </div>
+        <div class="container">
+          <ul class="card-list">
+            <!-- 12 Cards for Each Month -->
+            <li class="card-item">
+              <a href="manage_class_month.html" class="card-link">
+                <div class="card-content">
+                  <h2>January</h2>
+                  <button class="card-button material-symbols-rounded">
+                    arrow_forward
+                  </button>
+                </div>
+              </a>
+            </li>
+            <li class="card-item">
+              <a href="manage_class_month.html" class="card-link">
+                <div class="card-content">
+                  <h2>February</h2>
+                  <button class="card-button material-symbols-rounded">
+                    arrow_forward
+                  </button>
+                </div>
+              </a>
+            </li>
+            <li class="card-item">
+              <a href="manage_class_month.html" class="card-link">
+                <div class="card-content">
+                  <h2>March</h2>
+                  <button class="card-button material-symbols-rounded">
+                    arrow_forward
+                  </button>
+                </div>
+              </a>
+            </li>
+            <li class="card-item">
+              <a href="manage_class_month.html" class="card-link">
+                <div class="card-content">
+                  <h2>April</h2>
+                  <button class="card-button material-symbols-rounded">
+                    arrow_forward
+                  </button>
+                </div>
+              </a>
+            </li>
+            <li class="card-item">
+              <a href="manage_class_month.html" class="card-link">
+                <div class="card-content">
+                  <h2>May</h2>
+                  <button class="card-button material-symbols-rounded">
+                    arrow_forward
+                  </button>
+                </div>
+              </a>
+            </li>
+            <li class="card-item">
+              <a href="manage_class_month.html" class="card-link">
+                <div class="card-content">
+                  <h2>June</h2>
+                  <button class="card-button material-symbols-rounded">
+                    arrow_forward
+                  </button>
+                </div>
+              </a>
+            </li>
+            <li class="card-item">
+              <a href="manage_class_month.html" class="card-link">
+                <div class="card-content">
+                  <h2>July</h2>
+                  <button class="card-button material-symbols-rounded">
+                    arrow_forward
+                  </button>
+                </div>
+              </a>
+            </li>
+            <li class="card-item">
+              <a href="manage_class_month.html" class="card-link">
+                <div class="card-content">
+                  <h2>August</h2>
+                  <button class="card-button material-symbols-rounded">
+                    arrow_forward
+                  </button>
+                </div>
+              </a>
+            </li>
+            <li class="card-item">
+              <a href="manage_class_month.html" class="card-link">
+                <div class="card-content">
+                  <h2>September</h2>
+                  <button class="card-button material-symbols-rounded">
+                    arrow_forward
+                  </button>
+                </div>
+              </a>
+            </li>
+            <li class="card-item">
+              <a href="manage_class_month.html" class="card-link">
+                <div class="card-content">
+                  <h2>October</h2>
+                  <button class="card-button material-symbols-rounded">
+                    arrow_forward
+                  </button>
+                </div>
+              </a>
+            </li>
+            <li class="card-item">
+              <a href="manage_class_month.html" class="card-link">
+                <div class="card-content">
+                  <h2>November</h2>
+                  <button class="card-button material-symbols-rounded">
+                    arrow_forward
+                  </button>
+                </div>
+              </a>
+            </li>
+            <li class="card-item">
+              <a href="manage_class_month.html" class="card-link">
+                <div class="card-content">
+                  <h2>December</h2>
+                  <button class="card-button material-symbols-rounded">
+                    arrow_forward
+                  </button>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+    <script src="{{url_for('static', filename='sidebars.js')}}"></script>
+    <script src="{{url_for('static', filename='scripts/management_finance.js')}}"></script>
+    <script src="{{url_for('static', filename='scripts/management_class.js')}}"></script>
+    <script src="{{url_for('static', filename='scripts/manage_class_month.js')}}"></script>
+  </body>
+</html>

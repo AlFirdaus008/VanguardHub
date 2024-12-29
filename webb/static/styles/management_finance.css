@@ -1,0 +1,264 @@
+/* Styling untuk Pengelolaan Keuangan */
+.financial-management {
+  flex-grow: 1;
+  padding: 20px 40px;
+  position: relative;
+  top: 0;
+  left: 300px;
+  height: 100vh;
+  width: calc(100% - 350px); /* Width minus sidebar */
+  transition: 0.4s ease;
+  padding-top: 125px; /* Tambahkan ruang untuk header */
+}
+
+.sidebar.close ~ .financial-management {
+  left: 100px;
+  height: 100vh;
+  width: calc(100% - 100px);
+}
+
+/* Styling untuk header */
+.header {
+  width: calc(100% - 60px); /* Sesuaikan dengan lebar kartu */
+  padding: 20px 0;
+  text-align: center;
+  background-color: #242526;
+  border-radius: 10px;
+  position: absolute;
+  top: 20px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  z-index: 10;
+}
+
+.header h1 {
+  color: #ffdd45;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* Styling untuk Dropdown Pilih Bulan */
+.month-selection {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.month-selection label {
+  font-size: 1rem;
+  color: #fff;
+}
+
+.month-selection select,
+.month-selection button {
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #444;
+  color: #fff;
+  background-color: #242526;
+}
+
+.month-selection button {
+  background-color: #ffdd45;
+  border: none;
+  cursor: pointer;
+}
+
+.month-selection button:hover {
+  background-color: #f1c40f;
+}
+
+.sidebar.close ~ .financial-management {
+  margin-left: 100px;
+  width: calc(100% - 100px);
+}
+
+/* Styling untuk Judul Pengelolaan Keuangan */
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  color: #ffdd45;
+  margin-bottom: 20px;
+}
+
+/* Form Input */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: 1rem;
+  color: #fff;
+}
+
+/* Tombol lainnya seperti tombol 'Tambah Transaksi' */
+.card-button:not(.material-symbols-rounded) {
+  padding: 10px 20px; /* Padding lebih besar untuk tombol biasa */
+  background-color: #ffdd45; /* Warna latar belakang tombol */
+  color: #242526; /* Warna teks tombol */
+  border: none;
+  border-radius: 8px;
+}
+
+.card-button:not(.material-symbols-rounded):hover {
+  background-color: #f1c40f; /* Warna latar belakang saat hover */
+}
+
+/* Styling untuk container saldo */
+#balance {
+  width: 100%;
+  padding: 20px;
+  background-color: #f3f4f6; /* Latar belakang abu-abu muda */
+  border-radius: 10px; /* Sudut yang tumpul */
+  margin-bottom: 20px; /* Memberikan jarak antara saldo dan tabel */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Bayangan halus */
+}
+
+/* Styling untuk teks saldo */
+#balance h3 {
+  font-size: 26px;
+  font-weight: bold;
+  color: #4caf50; /* Warna hijau untuk saldo positif */
+  margin: 0;
+}
+
+/* Styling untuk menampilkan nilai saldo */
+#balance .amount {
+  font-size: 26px;
+  font-weight: bold;
+  color: #4caf50; /* Warna hijau untuk saldo positif */
+}
+
+/* Styling untuk saldo negatif */
+#balance .amount-negative {
+  font-size: 26px;
+  font-weight: bold;
+  color: #f44336; /* Warna merah untuk saldo negatif */
+}
+
+input,
+select,
+button {
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #444;
+  color: #fff;
+}
+
+input,
+select {
+  background-color: #242526;
+  padding: 10px;
+}
+
+button {
+  background-color: #ffdd45;
+  border: none;
+  cursor: pointer;
+  color: #242526;
+}
+
+.financial-management button {
+  margin-top: 10px;
+  margin-bottom: 50px;
+}
+
+button:hover {
+  background-color: #f1c40f;
+}
+
+/* Styling untuk Tabel Pengelolaan Keuangan */
+table {
+  width: 100%;
+  margin-top: 30px;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ddd;
+  color: #fff;
+}
+
+th {
+  background-color: #333;
+  color: #ffdd45;
+}
+
+td {
+  background-color: #242526;
+}
+
+td.kredit {
+  color: red;
+}
+
+td.debit {
+  color: green;
+}
+
+/* Button Download PDF */
+#download-pdf {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #ffdd45;
+  color: #242526;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#download-pdf:hover {
+  background-color: #f1c40f;
+}
+
+/* Responsivitas - 1024px - Tablet Landscape dan Laptop kecil */
+@media (max-width: 1024px) {
+  .financial-management {
+    padding: 20px;
+  }
+
+  table {
+    font-size: 0.9rem;
+  }
+}
+
+/* Responsivitas - 768px - Tablet dan perangkat lebih kecil */
+@media (max-width: 768px) {
+  .financial-management {
+    padding: 15px;
+  }
+
+  table {
+    font-size: 0.8rem;
+  }
+}
+
+/* Responsivitas - 480px - Perangkat Mobile */
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  table {
+    font-size: 0.7rem;
+  }
+}

@@ -1,0 +1,192 @@
+/* Import Google fonts */
+@import url("https://fonts.googleapis.com/css2?family=Mohave:ital,wght@0,300..700;1,300..700&family=Poppins:wght@400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Styling untuk header */
+.header {
+  width: calc(100% - 115px); /* Sesuaikan dengan lebar kartu */
+  padding: 20px 0;
+  text-align: center;
+  background-color: #242526;
+  border-radius: 10px;
+  position: absolute;
+  top: 20px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  z-index: 10;
+}
+
+.header h1 {
+  color: #ffdd45;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* Styling untuk sidebar */
+
+main {
+  flex-grow: 1;
+  padding: 20px 40px;
+  position: relative;
+  top: 0;
+  left: 300px;
+  height: 100vh;
+  width: calc(100% - 350px); /* Width minus sidebar */
+  transition: 0.4s ease;
+  padding-top: 125px; /* Tambahkan ruang untuk header */
+}
+
+main .text {
+  font-size: 30px;
+  font-weight: 500;
+  color: var(#fff);
+  padding: 12px 60px;
+}
+
+.sidebar.close ~ main {
+  left: 85px;
+  height: 100vh;
+  width: calc(100% - 100px);
+}
+
+main {
+  min-height: 100vh;
+  background: url(images/VANGUARD.png) center / cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main.table {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 80vw;
+  height: 100vh;
+  color: rgb(255, 255, 255); /*warna isi tulisan dalam tabel untuk dob, nim */
+  border-radius: 0.8rem;
+  overflow: hidden;
+}
+
+/* Styling untuk tabel */
+
+.table__body {
+  width: 100%;
+  height: 100%;
+  background-color: #2e2e2efe; /*warna bacground luar tabel */
+  border-radius: 0.7rem;
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+  height: 100%;
+  border-collapse: collapse;
+}
+
+td img {
+  width: 36px;
+  height: 36px;
+  margin-right: 5rem;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+table,
+th,
+td {
+  border-collapse: collapse;
+  padding: 1rem;
+  text-align: left;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #383838; /*warna tabel genap. ex: abdullah alfirdaus */
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #323232; /*warna tabel genap. ex: mylovia */
+}
+
+tbody tr:first-of-type {
+  border-top: 2px solid hsla(0, 1%, 35%, 0.502);
+}
+
+tbody tr:hover {
+  background-color: rgba(0, 0, 0, 0.4); /*warna saat kursor ada di tabel*/
+}
+
+a {
+  text-decoration: none;
+}
+
+a.name-link {
+  color: rgb(255, 255, 255); /*warna nama anak anak */
+}
+
+a.name-link:hover {
+  color: rgb(255, 255, 255); /*warna nama saat di klik */
+}
+
+.Instagram {
+  padding: 0.4rem 0;
+  border-radius: 2rem;
+  text-align: center;
+}
+
+.Instagram.username {
+  background: linear-gradient(
+    rgb(218, 52, 10),
+    rgb(219, 135, 16)
+  ); /*warna tombol username*/
+  color: #ffffff; /*warna tulisan follow */
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  display: inline-block;
+  margin: 0.5rem;
+}
+
+.group-header {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  color: #ffdd45; /*warna tulisan group */
+  background-color: #8a898973; /*background bagian kepala group */
+  padding: 1rem;
+  border-radius: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #2e2e2ea9; /*warna belakang scrollbar */
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #d2d2d2cc; /*warna scrollbar */
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #ffffff;
+}
+
+@media (max-width: 1000px) {
+  td:not(:first-of-type) {
+    min-width: 12.1rem;
+  }
+}

@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Vanguard Management Hub</title>
+    <style>
+        /* General Styles */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+        }
+        /* Hero Section */
+        .hero {
+            background-image: url("{{ url_for('static', filename='images/copyofVanguard.svg') }}");
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+        .hero .hero-content {
+            background-color: #000524;
+            max-width: 800px; /* Limit the max width for the content */
+            padding: 10px 20px;
+            text-align: center;
+        }
+        .hero h1 {
+            margin-bottom: 0px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 4rem;
+            font-weight: bold;
+            background-image: linear-gradient(to bottom, #ff4081 0%, #f9a825 60%); 
+            -webkit-background-clip: text; 
+            background-clip: text;
+            color: transparent;
+        }
+        .hero h6{
+            margin-top: -5px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            font-weight: bold;
+            background-image: linear-gradient(to bottom, #0780c9 20%, #04fdd0 95%); 
+            -webkit-background-clip: text; 
+            background-clip: text;
+            color: transparent;
+        }
+        .hero p {
+            margin-top: -20px;
+            margin-bottom: 40px;
+            background-image: linear-gradient(to bottom, #ff4081 0%, #f9a825 35%, #ff4081 60%, #f9a825 75%); 
+            -webkit-background-clip: text; 
+            background-clip: text;
+            color: transparent;
+        }
+
+        .cta-btn {
+            background-image: linear-gradient(to bottom, #0780c9 35%, #04fdd0 95%); 
+            color: #ffffff;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            transition: background-color 0.3s;
+        }
+
+        .cta-btn:hover {
+            background-image: linear-gradient(to bottom, #056AA0 25%, #03caa6 95%); 
+            color: #e5e5e5;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 50px;
+            background-color: #010623;
+            text-align: center;
+        }
+
+        .features h2 {
+            background-image: linear-gradient(to bottom, #ff4081 10%, #f9a825 60%); 
+            -webkit-background-clip: text; 
+            background-clip: text;
+            color: transparent;
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+
+        .features-grid {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .feature-item {
+            width: 22%;
+            margin-bottom: 30px;
+        }
+
+        .feature-item i {
+            background-image: linear-gradient(to bottom, #0780c9 20%, #04fdd0 95%); 
+            -webkit-background-clip: text; 
+            background-clip: text;
+            color: transparent;
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .feature-item h3 {
+            background-image: linear-gradient(to bottom, #ff4081 10%, #f9a825 60%); 
+            -webkit-background-clip: text; 
+            background-clip: text;
+            color: transparent;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        .feature-item p {
+            background-image: linear-gradient(to bottom, #0780c9 10%, #04fdd0 20%, #0780c9 33%, #04fdd0 45%, #0780c9 55%, #04fdd0 70%, #0780c9 80%, #04fdd0 100%); 
+            -webkit-background-clip: text; 
+            background-clip: text;
+            color: transparent;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        /* How It Works Section */
+        .how-it-works {
+            padding: 50px;
+            background-color: #030721;
+            text-align: center;
+        }
+
+        .how-it-works h2 {
+            background-image: linear-gradient(to bottom, #ff4081 10%, #f9a825 60%); 
+            -webkit-background-clip: text; 
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 30px;
+        }
+
+        .steps {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .step {
+            width: 28%;
+            margin-bottom: 30px;
+        }
+
+        .step span {
+            display: block;
+            font-size: 3rem;
+            background-image: linear-gradient(to bottom, #0780c9 20%, #04fdd0 95%);  
+            -webkit-background-clip: text; 
+            background-clip: text;
+            color: transparent;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            margin-bottom: 15px;
+        }
+
+        .step h3 {
+            background-image: linear-gradient(to bottom, #ff4081 10%, #f9a825 60%); 
+            -webkit-background-clip: text; 
+            background-clip: text;
+            color: transparent;
+        }
+        .step p {
+            background-image: linear-gradient(to bottom, #0780c9 20%, #04fdd0 95%);   
+            -webkit-background-clip: text; 
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 50px;
+            background-color: #040820;
+            text-align: center;
+        }
+
+        .testimonials h2 {
+            background-image: linear-gradient(to bottom, #ff4081 10%, #f9a825 60%); 
+            -webkit-background-clip: text; 
+            background-clip: text;
+            color: transparent;
+        }
+
+        .testimonial-grid {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .testimonial-item {
+            width: 30%;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+        .testi-item p {
+            background-image: linear-gradient(to bottom, #0780c9 10%, #04fdd0 20%, #0780c9 33%, #04fdd0 45%, #0780c9 55%, #04fdd0 70%, #0780c9 80%, #04fdd0 100%); 
+            -webkit-background-clip: text; 
+            background-clip: text;
+            color: transparent;
+        }
+        .testimonial-item h4 {
+            background-image: linear-gradient(to bottom, #ff4081 10%, #f9a825 60%); 
+            -webkit-background-clip: text; 
+            background-clip: text;
+            color: transparent;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+            /* Login Section */
+            .login {
+            padding: 50px;
+            background-color: #06091e;
+            text-align: center;
+        }
+
+        .login h2 {
+            background-image: linear-gradient(to bottom, #ff4081 10%, #f9a825 60%); 
+            -webkit-background-clip: text; 
+            background-clip: text;
+            color: transparent;
+        }
+        .login-btn {
+            display: inline-block;
+            background-image: linear-gradient(to bottom, #0780c9 35%, #04fdd0 95%); 
+            color: #ffffff;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            transition: background-color 0.3s;
+            margin-bottom: 30px;
+        }
+
+        .login-btn:hover {
+            background-image: linear-gradient(to bottom, #056AA0 25%, #03caa6 95%); 
+            color: #e5e5e5;
+        }
+
+
+        /* Footer */
+        footer {
+        background-color: #00010b;
+        padding: 20px;
+        text-align: center;
+        display: flex;
+        justify-content: center; 
+        align-items: center; 
+        }
+
+        footer i, footer a {
+            display: flex; 
+            align-items: center; 
+            font-size: 1.5rem;
+        }
+
+        footer i {
+            background-image: linear-gradient(to bottom, #ff4081 10%, #f9a825 60%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-right: 5px; 
+            font-size: 1.5rem;
+        }
+
+        footer a {
+            background-image: linear-gradient(to bottom, #0780c9 20%, #04fdd0 95%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>VANGUARD</h1>
+            <h6>MANAGEMENT HUB</h6>
+            <p>
+              This platform is designed exclusively for the Vanguard Data Science Class of 2024, 
+              providing a central place to manage all aspects of our academic journey together. 
+            </p>
+            <a href="#" class="cta-btn" id="cta-btn">&darr; Let's take a look &darr;</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <h2>Features</h2>
+        <div class="features-grid">
+            <div class="feature-item">
+                <i class="fa-solid fa-people-roof"></i>
+                <h3>Class Management</h3>
+                <p>Manage your class with integrated resource tracking and operational oversight.</p>
+            </div>
+            <div class="feature-item">
+                <i class="fa-regular fa-calendar-check"></i>
+                <h3>Courses Scheduling</h3>
+                <p>Organize your time effectively with an integrated class schedule view.</p>
+            </div>
+            <div class="feature-item">
+                <i class="fa-solid fa-list-check"></i>
+                <h3>Task Tracking</h3>
+                <p>Never miss a deadline with automated assignment tracking and reminders.</p>
+            </div>
+            <div class="feature-item">
+                <i class="fa-solid fa-people-group"></i>
+                <h3>Team Project</h3>
+                <p>Coordinate your team project with seamless collaboration and improved productivity.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+        <h2>How It Works</h2>
+        <div class="steps">
+            <div class="step">
+                <span>1</span>
+                <h3>Sign Up</h3>
+                <p>Create an account in just a few minutes.</p>
+            </div>
+            <div class="step">
+                <span>2</span>
+                <h3>Add Classes</h3>
+                <p>Sync your class schedule.</p>
+            </div>
+            <div class="step">
+                <span>3</span>
+                <h3>Track Progress</h3>
+                <p>Stay on top of assignments and grades.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <h2>What The Developer Say</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-item">
+                <div class="testi-item">
+                    <p>“I believe it will assist all the Vanguard to stay on top of their workload.”</p>
+                </div>
+                <h4>- Naura Kanaya</h4>
+            </div>
+            <div class="testimonial-item">
+                <div class="testi-item">
+                    <p>“As the class captain, I'm pretty sure this web will help me to manage my classes.”</p>
+                </div>
+                <h4>- Al-Firdaus Nuzula</h4>
+            </div>
+            <div class="testimonial-item">
+                <div class="testi-item">
+                    <p>“Whatever they both say, i agree. This web is so fire.”</p>
+                </div>
+                <h4>- Alfin Jayadi</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- Login Section -->
+    <section class="login">
+        <h2>Are you ready?</h2>
+        <a href="{{ url_for('login') }}" class="login-btn">Time to move</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <i class="fab fa-instagram"></i>
+        <a href="https://www.instagram.com/vanguard_24a/?igsh=ZWoyemI2N2pmOW1x", target="_blank">Vanguard_24a.</p>
+    </footer>
+    <script>
+        document.getElementById('cta-btn').onclick = function(e) {
+            e.preventDefault();
+            const targetY = document.getElementById('features').offsetTop;
+            const duration = 600, startY = window.scrollY, distance = targetY - startY;
+            let startTime = null;
+    
+            function animate(currentTime) {
+                if (!startTime) startTime = currentTime;
+                const progress = Math.min((currentTime - startTime) / duration, 1);
+                const ease = progress < 0.5 ? 2 * progress * progress : -1 + (4 - 2 * progress) * progress;
+                window.scrollTo(0, startY + distance * ease);
+                if (progress < 1) requestAnimationFrame(animate);
+            }
+            requestAnimationFrame(animate);
+        };
+    </script>    
+  
+</body>
+</html>

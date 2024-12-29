@@ -1,0 +1,192 @@
+.home {
+  flex-grow: 1;
+  padding: 20px 40px;
+  position: relative;
+  top: 0;
+  left: 300px;
+  height: 100vh;
+  width: calc(100% - 350px); /* Width minus sidebar */
+  transition: 0.4s ease;
+  padding-top: 190px; /* Tambahkan ruang untuk header */
+}
+
+.home .text {
+  font-size: 30px;
+  font-weight: 500;
+  color: var(#fff);
+  padding: 12px 60px;
+}
+
+.sidebar.close ~ .home {
+  left: 100px;
+  height: 100vh;
+  width: calc(100% - 100px);
+}
+
+/* Styling untuk header */
+.header {
+  width: calc(100% - 115px); /* Sesuaikan dengan lebar kartu */
+  padding: 20px 20px;
+  text-align: center;
+  background-color: #242526;
+  border-radius: 10px;
+  position: absolute;
+  top: 20px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  z-index: 10;
+}
+
+.header h1 {
+  color: #ffdd45;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* ================== Table CSS ================== */
+
+.home {
+  min-height: 100vh;
+  background: url(images/VANGUARD.png) center / cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main.table {
+  width: 80vw;
+  height: 90vh;
+  color: rgb(255, 255, 255); /*warna isi tulisan dalam tabel untuk dob, nim */
+  background-color: #242526;
+  backdrop-filter: blur(7px);
+  box-shadow: 0 0.4rem 0.8rem #0005;
+  border-radius: 0.8rem;
+  overflow: hidden;
+  padding-top: 10px;
+
+  /* width: 82vw;
+    height: 90vh;
+    background-color: #242526;
+    backdrop-filter: blur(7px);
+    box-shadow: 0 0.4rem 0.8rem #0005;
+    border-radius: 0.8rem;
+    overflow: hidden; */
+}
+
+.table__header {
+  width: 100%;
+  height: 10%;
+  background-color: #242526;
+  padding: 0.8rem 1rem;
+}
+
+.table__header h1 {
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.4rem;
+}
+
+.table__body {
+  width: 95%;
+  max-height: calc(89% - 1.6rem);
+  background-color: #2e2e2efe;
+  margin: 0.8rem auto;
+  border-radius: 0.6rem;
+  overflow: auto;
+}
+
+.table__body::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.5rem;
+}
+
+.table__body::-webkit-scrollbar-thumb {
+  border-radius: 0.5rem;
+  background-color: rgba(12, 11, 11, 0.267);
+}
+
+table {
+  width: 100%;
+}
+
+td img {
+  width: 36px;
+  height: 36px;
+  margin-right: 5rem;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+table,
+th,
+td {
+  border-collapse: collapse;
+  padding: 1rem;
+  text-align: left;
+}
+
+thead th {
+  position: sticky;
+  top: 0;
+  left: 0;
+  background-color: #2e2e2efe; /*background head tabel */
+  color: #ffdd45; /*warna huruf di head tabel */
+  border-bottom: 2px solid #ffffffb3; /*garis batas antara kepala tabel dan isi tabel 1 */
+  text-align: center;
+  vertical-align: middle;
+}
+
+thead th:nth-child(3) {
+  text-align: left;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #323232; /*warna tabel genap. ex: abdullah alfirdaus */
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #383838; /*warna tabel genap. ex: mylovia */
+}
+
+tbody tr:first-of-type {
+  border-top: 2px solid hsla(0, 1%, 35%, 0.502);
+}
+
+tbody tr:hover {
+  background-color: rgba(0, 0, 0, 0.4); /*warna saat kursor ada di tabel*/
+}
+
+a {
+  text-decoration: none;
+}
+
+a.name-link {
+  color: white;
+}
+
+.status {
+  padding: 0.4rem 0;
+  border-radius: 2rem;
+  text-align: center;
+}
+
+.status.username {
+  background: linear-gradient(rgb(181, 36, 0), rgb(182, 108, 6));
+  color: #ffffff;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  display: inline-block;
+  margin: 0.5rem;
+}
+
+.status.username a {
+  text-decoration: none;
+}
+
+@media (max-width: 1000px) {
+  td:not(:first-of-type) {
+    min-width: 12.1rem;
+  }
+}

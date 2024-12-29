@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login & Sign Up</title>
+    <!-- Link to external CSS for styles -->
+    <!-- Font Awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-image: url("{{ url_for('static', filename='images/copyofVanguard.svg') }}");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+      .wrapper {
+        position: relative;
+        width: 750px;
+        height: 450px;
+        background: #000118;
+        border-radius: 6px;
+        box-shadow: 0 0 25px;
+        overflow: hidden;
+      }
+      .wrapper .form-box {
+        position: absolute;
+        top: 0;
+        width: 50%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .wrapper .form-box.login {
+        left: 0;
+        padding: 0 60px 0 40px;
+      }
+      .wrapper .form-box.login .animation {
+        transform: translateX(0);
+        transition: 0.7s ease;
+        opacity: 1;
+        filter: blur(0);
+      }
+      .wrapper.active .form-box.login .animation {
+        transform: translateX(-120%);
+        transition-delay: calc(0.1s * var(--data));
+        opacity: 0;
+        filter: blur(10px);
+      }
+
+      .wrapper.active .divider.animation {
+        transform: translateX(-120%);
+        transition-delay: calc(0.1s * var(--data));
+        opacity: 0;
+        filter: blur(10px);
+      }
+
+      .wrapper .form-box.signup {
+        right: 0;
+        padding: 0 40px 0 60px;
+      }
+      .wrapper .form-box.signup .animation {
+        transform: translateX(120%);
+        transition: 0.7s;
+      }
+      .wrapper.active .form-box.signup .animation {
+        transform: translateX(0);
+        transition-delay: calc(0.1s * var(--data));
+      }
+      .form-box h2 {
+        font-size: 32px;
+        background-image: linear-gradient(to bottom, #ff4081 0%, #f9a825 60%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        text-align: center;
+      }
+      .form-box .input-box {
+        position: relative;
+        width: 100%;
+        height: 45px;
+        margin: 25px 0;
+      }
+      .input-box input {
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        border: none;
+        outline: none;
+        border-bottom: 2px solid #04fdd0;
+        background-image: linear-gradient(to bottom, #ff4081 0%, #f9a825 60%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .input-box label {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        background-image: linear-gradient(to bottom, #0780c9 20%, #04fdd0 95%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        pointer-events: none;
+        font-size: 16px;
+        transition: 0.5s;
+      }
+
+      .input-box input:focus ~ label,
+      .input-box input:not(:placeholder-shown) ~ label {
+        top: -5px;
+        color: #046a97;
+      }
+
+      .divider {
+        width: 100%;
+        margin-block: 10px;
+        position: relative;
+      }
+      .divider p {
+        text-align: center;
+        background-image: linear-gradient(to bottom, #0780c9 20%, #04fdd0 95%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        font-weight: 600;
+        justify-content: center;
+      }
+      .divider p::before,
+      .divider p::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        width: 45%;
+        height: 1px;
+        background-color: #333639;
+      }
+
+      .divider p::before {
+        left: 0;
+      }
+
+      .divider p::after {
+        right: 0;
+      }
+      .divider.animation {
+        opacity: 1;
+        transform: translateX(0);
+        transition: 0.7s ease;
+        filter: blur(0);
+      }
+
+      .input-box i {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        background-image: linear-gradient(to bottom, #0780c9 20%, #04fdd0 95%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        font-size: 18px;
+        transition: 0.5s;
+      }
+      .input-box input:focus ~ i,
+      .input-box input:not(:placeholder-shown) ~ i {
+        top: -5px;
+        color: #0780c9;
+      }
+      .btn {
+        position: relative;
+        width: 100%;
+        height: 45px;
+        background: #040929;
+        color: #fff;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 600;
+        border: 1px solid #f9a825;
+      }
+      .btn:hover {
+        background: #000229;
+        border-color: #ff4081; /* Border color when hovered */
+      }
+      .btn p,
+      .btn a,
+      .btn i {
+        background-image: linear-gradient(to bottom, #ff4081 0%, #f9a825 60%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .form-box .reg-link {
+        font-size: 14.5px;
+        background-image: linear-gradient(to bottom, #0780c9 0%, #04fdd0 70%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        text-align: center;
+        margin: 20px 0 10px;
+      }
+      .reg-link p a {
+        background-image: linear-gradient(to bottom, #ff4081 0%, #f9a825 60%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        text-decoration: none;
+        font-weight: 600;
+        position: relative; /* Position the pseudo-element for the underline */
+      }
+
+      /* Create a custom underline effect using pseudo-element */
+      .reg-link p a:hover {
+        text-decoration: none; /* Remove default underline */
+      }
+
+      .reg-link p a:hover::after {
+        content: ""; /* Create an underline pseudo-element */
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px; /* Adjust the thickness of the underline */
+        background-image: linear-gradient(
+          to bottom,
+          #ff4081 0%,
+          #f9a825 60%
+        ); /* Match the gradient with the text */
+      }
+      .wrapper .info-text {
+        position: absolute;
+        width: 50%;
+        height: 100%;
+        top: 50%;
+        transform: translateY(-50%);
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .wrapper .info-text.login {
+        right: 0;
+        text-align: right;
+        padding: 0 40px 60px 150px;
+      }
+      .wrapper .info-text.signup {
+        left: 0;
+        text-align: left;
+        padding: 0 150px 60px 40px;
+        pointer-events: none;
+      }
+      .wrapper .info-text.signup .animation {
+        transform: translateX(-120%);
+        transition: 0.7s ease;
+      }
+      .wrapper.active .info-text.signup .animation {
+        transform: translateX(0);
+        transition-delay: calc(0.1s * var(--data));
+      }
+
+      .info-text h2 {
+        font-size: 36px;
+        line-height: 1.4;
+        text-transform: uppercase;
+        background-image: linear-gradient(to bottom, #ff4081 0%, #f9a825 80%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .info-text p {
+        font-size: 16px;
+        background-image: linear-gradient(to bottom, #0780c9 0%, #04fdd0 70%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .wrapper .info-text.login .animation {
+        transform: translateX(0);
+        transition: 0.7s ease;
+        opacity: 1;
+        filter: blur(0);
+      }
+      .wrapper.active .info-text.login .animation {
+        transform: translateX(120%);
+        transition-delay: calc(0.1s * var(--data));
+        opacity: 0;
+        filter: blur(10px);
+      }
+      .wrapper .bg-animate {
+        position: absolute;
+        top: -4px;
+        right: 0;
+        width: 850px;
+        height: 600px;
+        background: #040929;
+        transform: rotate(10deg) skewY(40deg);
+        transform-origin: bottom right;
+        transition: 1.5s ease;
+      }
+      .wrapper.active .bg-animate {
+        transform: rotate(0deg) skewY(0deg);
+        transition-delay: 0.5s;
+      }
+      .wrapper .bg-animate2 {
+        position: absolute;
+        top: 100%;
+        left: 250px;
+        width: 850px;
+        height: 700px;
+        background: #000118;
+        transform: rotate(0deg) skewY(0deg);
+        transform-origin: bottom left;
+        transition: 1.5s ease;
+      }
+
+      .wrapper.active .bg-animate2 {
+        transform: rotate(-11deg) skewY(-41deg);
+        transition-delay: 1.2s;
+      }
+      @media (max-width: 600px) {
+        .container {
+          flex-direction: column;
+          width: 100%;
+          height: auto;
+        }
+
+        .text-box,
+        .main-content {
+          width: 100%;
+          border-right: none;
+          border-bottom: 1px solid #e6e6e6;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- Background animation spans -->
+      <span class="bg-animate"></span>
+      <span class="bg-animate2"></span>
+
+      <!-- Login form container -->
+      <div class="form-box login">
+        <h2 class="animation" style="--data: 0">Login</h2>
+        <form method="POST" action="{{ url_for('login') }}">
+          <input type="hidden" name="form_action" value="login" />
+          <!-- Username input -->
+          <div class="input-box animation" style="--data: 1">
+            <input type="text" name="username" placeholder="" />
+            <label>Username</label>
+            <i class="fa-solid fa-user"></i>
+            <!-- User icon -->
+          </div>
+
+          <!-- Password input -->
+          <div class="input-box animation" style="--data: 3">
+            <input type="password" name="password" placeholder="" />
+            <label>Password</label>
+            <i class="fa-solid fa-lock"></i>
+            <!-- Lock icon -->
+          </div>
+
+          <!-- Submit button -->
+          <button type="submit" class="btn animation" style="--data: 4">
+            <p>Login</p>
+          </button>
+          <div class="divider animation" style="--data: 4">
+            <p>or</p>
+          </div>
+          <button class="btn animation" style="--data: 4">
+            <i class="fa-brands fa-google" style="margin-right: 10px"></i>
+            <a
+              href="{{ url_for('google.login') }}"
+              class="login-btn"
+              style="text-decoration: none"
+              >Continue with Google
+            </a>
+          </button>
+          {% with messages = get_flashed_messages(with_categories=True) %} {% if
+          messages %}
+          <div class="flashes">
+            {% for category, message in messages %}
+            <p
+              class="{{ category }}"
+              style="color: red; font-weight: light; font-size: 10px"
+            >
+              {{ message }}
+            </p>
+            {% endfor %}
+          </div>
+          {% endif %} {% endwith %}
+          <!-- Link to sign-up form -->
+          <div class="reg-link animation" style="--data: 4">
+            <p>
+              Don't have an account? <a href="#" class="signup-link">Sign Up</a>
+            </p>
+          </div>
+        </form>
+      </div>
+
+      <!-- Welcome back message for login -->
+      <div class="info-text login">
+        <h2 class="animation" style="--data: 0">Welcome</h2>
+        <h2 class="animation" style="--data: 0">Back!</h2>
+        <p class="animation" style="--data: 1">What's your name</p>
+        <p class="animation" style="--data: 1">again?.</p>
+      </div>
+
+      <!-- Sign-Up form container -->
+      <div class="form-box signup">
+        <h2 class="animation">Sign Up</h2>
+        <form method="POST" action="{{ url_for('login') }}">
+          <input type="hidden" name="form_action" value="signup" />
+          <!-- Username input -->
+          <div class="input-box animation" style="--data: 17">
+            <input type="text" name="username" placeholder="" />
+            <label>Username</label>
+            <i class="fa-solid fa-user"></i>
+            <!-- User icon -->
+          </div>
+
+          <!-- Email input -->
+          <div class="input-box animation" style="--data: 18">
+            <input type="email" name="email" placeholder="" />
+            <label>Email</label>
+            <i class="fa-solid fa-envelope"></i>
+            <!-- Envelope icon -->
+          </div>
+
+          <!-- Password input -->
+          <div class="input-box animation" style="--data: 19">
+            <input type="password" name="password" placeholder="" />
+            <label>Password</label>
+            <i class="fa-solid fa-lock"></i>
+            <!-- Lock icon -->
+          </div>
+
+          <!-- Submit button -->
+          <button type="submit" class="btn animation" style="--data: 20">
+            <p>Sign Up</p>
+          </button>
+
+          <!-- Link to login form -->
+          <div class="reg-link animation" style="--data: 21">
+            <p>
+              Already have an account? <a href="#" class="login-link">Login</a>
+            </p>
+          </div>
+        </form>
+      </div>
+
+      <!-- Welcome back message for signup -->
+      <div class="info-text signup">
+        <h2 class="animation" style="--data: 22">Howdy!</h2>
+        <p class="animation" style="--data: 23">First time here? Let's</p>
+        <p class="animation" style="--data: 23">get started.</p>
+      </div>
+    </div>
+
+    <!-- External JavaScript file -->
+    <script>
+      var wrapper = document.querySelector(".wrapper");
+      var signuplink = document.querySelector(".signup-link");
+      var loginlink = document.querySelector(".login-link");
+      signuplink.onclick = () => {
+        wrapper.classList.add("active");
+      };
+      loginlink.onclick = () => {
+        wrapper.classList.remove("active");
+      };
+    </script>
+  </body>
+</html>

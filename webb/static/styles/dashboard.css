@@ -1,0 +1,47 @@
+.main {
+  flex-grow: 1;
+  padding: 20px 40px;
+  position: relative;
+  top: 0;
+  left: 300px; /* Posisi saat sidebar terbuka */
+  height: 100vh;
+  width: calc(100% - 350px); /* Lebar penuh dikurangi sidebar dan padding */
+  transition: 0.4s ease;
+}
+
+.sidebar.close ~ .main {
+  left: 100px; /* Posisi saat sidebar ditutup */
+  width: calc(100% - 100px); /* Lebar penuh dikurangi sidebar kecil */
+}
+
+.main h1 {
+  background-image: linear-gradient(to bottom, #ff4081 0%, #f9a825 60%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-family: "Poppins", sans-serif;
+  font-size: 60px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.main p {
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+  font-weight: lighter;
+  color: #fff;
+}
+
+/* Responsif untuk layar kecil */
+@media (max-width: 768px) {
+  main {
+    left: 0; /* Konten mengambil seluruh lebar */
+    width: 100%; /* Sesuaikan dengan layar penuh */
+    padding: 20px; /* Padding tetap */
+  }
+
+  .sidebar.close ~ main {
+    left: 250px; /* Sidebar muncul (asumsi sidebar kecil = 250px) */
+    width: calc(100% - 250px); /* Kurangi lebar sidebar kecil */
+  }
+}
