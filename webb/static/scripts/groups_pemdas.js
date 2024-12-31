@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const csvUrl = "/instance/members.csv";
+  const csvUrl = "/static/members.csv";
   let groups = [
     [3, 7, 15],
     [7, 17, 4],
@@ -70,7 +70,7 @@ function populateTable(data, groups) {
         const nameCell = document.createElement("td");
         const gender = row[7].trim().toLowerCase();
         const imageSrc =
-          gender === "male" ? "/web/static/boy.jpg" : "/web/static/girl.jpg";
+          gender === "male" ? "/static/boy.jpg" : "/static/girl.jpg";
         nameCell.innerHTML = `<img src="${imageSrc}" alt="${gender}"><a class="name-link" href="${row[5]}" target="_blank"><strong>${row[1]}</strong></a>`;
 
         const birthdayCell = document.createElement("td");
