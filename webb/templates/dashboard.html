@@ -105,6 +105,24 @@
       <h1>Welcome, {{ user }}!</h1>
       <!-- Username placeholder from backend -->
       <p>Today is : <span id="current-date"></span></p>
+
+      <div class="container">
+        <!-- TABLE TUGAS KELAS -->
+        <table>
+          <thead>
+            <th>Checklist</th>
+            <th>Nama Tugas</th>
+            <th>Deadline</th>
+            <th>Sumber Materi</th>
+            <th>Link Pengumpulan</th>
+          </thead>
+          <tbody id="taskTableBody">
+            <!-- Tugas akan ditambahkan di sini -->
+          </tbody>
+        </table>
+
+        <div id="balance"></div>
+      </div>
       <!-- Date placeholder -->
     </main>
 
@@ -145,6 +163,6 @@
     </script>
 
     <script src="{{url_for('static', filename='scripts/sidebars.js')}}"></script>
-    <script src="{{url_for('static', filename='scripts/main.js')}}"></script>
+    <script src="{{url_for('static', filename='scripts/dashboard.js')}}"></script>
   </body>
 </html>
