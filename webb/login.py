@@ -6,7 +6,7 @@ import os
 import re
 from itsdangerous import URLSafeTimedSerializer
 from flask_mail import Message
-from __init__ import mail
+from . import mail
 
 
 login_bp = Blueprint('login', __name__)
