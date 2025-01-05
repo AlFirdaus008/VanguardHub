@@ -5,7 +5,7 @@ from datetime import datetime
 
 # Buat Blueprint
 main_courses = Blueprint('courses', __name__)
-file_path_tasks = os.path.join(os.getcwd(), 'webb','data', 'tasks.csv')
+file_path_tasks = os.path.join(os.getcwd(), 'VanguardHub', 'webb','data', 'tasks.csv')
 if not os.path.exists(file_path_tasks):
     with open(file_path_tasks, 'w', newline='') as file:
         writer = csv.writer(file, delimiter=';')
