@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const csvUrl = "/data/members.csv";
+  const csvUrl = "./data/members.csv";
   let groups = [
     [3, 7, 15],
     [7, 17, 4],
