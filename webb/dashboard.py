@@ -4,7 +4,7 @@ main_dashboard = Blueprint('dashboard', __name__)
 
 @main_dashboard.route('/')
 def home():
-    return render_template("dashboard.html")
+    return render_template("firstpage.html")
 
 @main_dashboard.route('/sidebars.html')
 def sidebars():
