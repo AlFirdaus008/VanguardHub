@@ -17,15 +17,15 @@ def create_app():
         redirect_to='google_authorized',
         scope= ["openid", "https://www.googleapis.com/auth/userinfo.email"]
     )
-    from login import login_bp
-    from profile import profile_bp
-    from scheduling import scheduling_bp
-    from courses import main_courses
-    from members import main_members
-    from management_class import main_management_class
-    from team_project import main_team_project
-    from settings import settings_bp
-    from activity import activity_feed_bp
+    from .login import login_bp
+    from .profile import profile_bp
+    from .scheduling import scheduling_bp
+    from .courses import main_courses
+    from .members import main_members
+    from .management_class import main_management_class
+    from .team_project import main_team_project
+    from .settings import settings_bp
+    from .activity import activity_feed_bp
 
     PREFERRED_URL_SCHEME = 'https' 
     app.register_blueprint(google_bp, url_prefix='/google_login')

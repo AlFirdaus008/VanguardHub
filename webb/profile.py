@@ -7,7 +7,7 @@ import csv
 import os
 import base64
 from datetime import datetime
-from activity import log_activity
+from .activity import log_activity
 
 
 profile_bp = Blueprint('profile', __name__)

@@ -6,8 +6,8 @@ import csv
 import os
 import base64
 import pickle
-from activity import log_activity
-from profile import get_user_profile
+from .activity import log_activity
+from .profile import get_user_profile
 from dotenv import load_dotenv
 
 scheduling_bp = Blueprint('scheduling', __name__)
