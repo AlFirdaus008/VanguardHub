@@ -13,7 +13,7 @@ from dotenv import load_dotenv
 scheduling_bp = Blueprint('scheduling', __name__)
 
 # Specify the path to the .env file
-env_path = os.path.join(os.getcwd(),'config', '.env')
+env_path = os.path.join(os.getcwd(), 'webb','config', '.env')
 load_dotenv(dotenv_path=env_path)
 
 
@@ -28,9 +28,9 @@ SCOPES = [
     'https://www.googleapis.com/auth/userinfo.profile'
 ]
 
-file_path_users = os.path.join(os.getcwd(), 'data', 'users.csv')
+file_path_users = os.path.join(os.getcwd(), 'webb', 'data', 'users.csv')
 
-token_path = os.path.join(os.getcwd(),'config', 'token.pickle')
+token_path = os.path.join(os.getcwd(), 'webb','config', 'token.pickle')
 
 def generate_nonce():
     return base64.b64encode(os.urandom(16)).decode('utf-8')
