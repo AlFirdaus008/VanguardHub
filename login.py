@@ -11,9 +11,9 @@ from __init__ import mail
 
 login_bp = Blueprint('login', __name__)
 
-file_path_roles = os.path.join(os.getcwd(),'projek', 'data', 'roles.csv')
-file_path_users = os.path.join(os.getcwd(),'projek', 'data', 'users.csv')
-file_path_profile = os.path.join(os.getcwd(),'projek', 'data', 'profile.csv')
+file_path_roles = os.path.join(os.getcwd(),'data', 'roles.csv')
+file_path_users = os.path.join(os.getcwd(),'data', 'users.csv')
+file_path_profile = os.path.join(os.getcwd(),'data', 'profile.csv')
 
 @login_bp.route('/')
 def home():

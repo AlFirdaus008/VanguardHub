@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 from flask_mail import Mail
 import os
 
-env_path = os.path.join(os.getcwd(),'projek', 'config', '.env')
+env_path = os.path.join(os.getcwd(),'config', '.env')
 load_dotenv(dotenv_path=env_path)
 
 mail = Mail()

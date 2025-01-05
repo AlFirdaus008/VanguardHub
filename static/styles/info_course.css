@@ -1,0 +1,347 @@
+/* Style Dasar */
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #18191a; /* Warna gelap seperti latar card */ /* Warna teks utama */
+}
+
+.main-content {
+  border-radius: 10px;
+  margin-top: -3rem;
+  padding: 20px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+/* task-header styling */
+.task-header {
+  width: 80%;
+  max-width: 1200px;
+  margin: 20px auto;
+  text-align: center;
+  background-color: #242526;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.task-header h1 {
+  color: #ffdd45;
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* Info Mata Kuliah Section */
+.courses {
+  width: 90%;
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.course-info {
+  background-color: #242526;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.course-info .card {
+  padding: 20px;
+  background-color: #242526;
+  border-radius: 10px;
+}
+
+.course-info h3,
+.course-info p {
+  color: #e4e6eb;
+  padding: 10px;
+  font-weight: 500;
+}
+
+.course-info .highlight {
+  color: #ffdd45;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.course-info .highlight:hover {
+  color: #d25541;
+  font-weight: 500;
+  text-decoration: none;
+  text-decoration: none;
+}
+
+/* Button-like links with hover effects */
+.button-link {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 5px 0;
+  border-radius: 20px;
+  background-color: #ffdd45;
+  color: #18191a;
+  text-decoration: none;
+  font-weight: 600;
+  text-align: center;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.button-link i {
+  margin-right: 8px;
+}
+
+/* Hover effect for buttons */
+.button-link:hover {
+  background: linear-gradient(135deg, #d25541, #ffdd45);
+  transform: translateY(-3px);
+  text-decoration: none;
+}
+
+/* Button styling inside course-info, to make them align horizontally */
+.course-info .button-group {
+  display: grid; /* Ubah dari flex ke grid */
+  grid-template-columns: repeat(3, 1fr); /* Membuat 3 kolom */
+  gap: 10px; /* Jarak antar tombol */
+  margin: 10px 0;
+}
+
+/* Horizontal button group */
+.button-group {
+  width: 100%; /* Lebar kontainer dapat disesuaikan sesuai kebutuhan */
+  display: grid; /* Ubah menjadi grid */
+  grid-template-columns: repeat(3, 1fr); /* Membuat 3 kolom */
+  gap: 10px; /* Jarak antar tombol */
+  margin: 10px 0;
+}
+
+/* Task Manager Section */
+.task-manager {
+  width: 80%;
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Task Manager Section */
+.task-manager {
+  width: 80%;
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Task Manager Section */
+.task-manager {
+  width: 80%;
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.task-container {
+  width: 90%; /* Tidak full width, sisakan ruang kanan-kiri */
+  max-width: 1200px;
+  margin: 40px auto; /* Memberikan jarak atas dan bawah */
+  padding: 20px;
+  background-color: #242526; /* Warna seperti card */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+/* Form Input Styling */
+form {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+form label {
+  text-align: right;
+  align-self: center;
+  font-weight: bold;
+  color: #e4e6eb; /* Teks warna terang */
+}
+
+form input,
+form button {
+  padding: 10px;
+  border: 1px solid #3a3b3c; /* Border seperti card */
+  border-radius: 5px;
+  background-color: #242526; /* Warna input sesuai dengan card */
+  color: #e4e6eb;
+}
+
+form input::placeholder {
+  color: #a8a8a8; /* Placeholder warna abu */
+}
+
+form button {
+  grid-column: 2 / span 1;
+  background-color: #ffdd45; /* Tombol kuning mencolok */
+  color: #18191a;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+form button:hover {
+  background-color: #e6c72d; /* Warna hover kuning lebih gelap */
+}
+
+/* Table Styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead th {
+  background-color: #3a3b3c; /* Warna task-header tabel sesuai dengan card */
+  color: #ffdd45; /* Teks warna kuning */
+  padding: 10px;
+  border: 1px solid #242526;
+}
+
+tbody td {
+  padding: 10px;
+  border: 1px solid #3a3b3c;
+  color: #e4e6eb; /* Warna teks terang */
+  text-align: center; /* Rata tengah secara horizontal */
+  vertical-align: middle; /* Rata tengah secara vertikal */
+}
+
+tbody tr:nth-child(even) {
+  background-color: #242526; /* Warna baris genap seperti card */
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #18191a; /* Warna baris ganjil sedikit lebih gelap */
+}
+
+tbody tr:hover {
+  background-color: #3a3b3c; /* Warna hover lebih terang */
+}
+
+/* Teks untuk kolom tanggal */
+td:nth-child(3) {
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  color: #ffdd45;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Link Styling */
+a {
+  color: #ffdd45;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Checkbox dan Progress */
+.checkbox-progress {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: bold;
+  color: #ffdd45;
+}
+
+.checkbox-progress span {
+  color: #e4e6eb; /* Warna angka sesuai teks utama */
+}
+
+.delete-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #e63946; /* Warna merah mencolok */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.delete-button i {
+  margin-right: 6px;
+  font-size: 16px;
+}
+
+.delete-button:hover {
+  background-color: #d62828; /* Warna merah lebih gelap untuk hover */
+  transform: translateY(-2px); /* Efek naik saat hover */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Bayangan hover */
+}
+
+.delete-button:active {
+  transform: translateY(0); /* Efek klik */
+  box-shadow: none;
+}
+
+/* Tombol Materi dan Pengumpulan */
+.material-button,
+.submission-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #4caf50; /* Warna hijau untuk tombol materi */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  text-decoration: none; /* Menghapus underline pada link */
+}
+
+.material-button:hover {
+  background-color: #43a047; /* Warna hijau lebih gelap saat hover */
+  transform: translateY(-2px); /* Efek hover naik */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Tambahkan bayangan */
+}
+
+.submission-button {
+  background-color: #2196f3; /* Warna biru untuk tombol pengumpulan */
+}
+
+.submission-button:hover {
+  background-color: #1976d2; /* Warna biru lebih gelap saat hover */
+  transform: translateY(-2px); /* Efek hover naik */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Tambahkan bayangan */
+}
+
+.material-button:active,
+.submission-button:active {
+  transform: translateY(0); /* Efek klik */
+  box-shadow: none;
+}
+
+/* Pusatkan tombol di kolom tabel */
+.table-buttons {
+  display: flex;
+  text-align: center; /* Rata tengah secara horizontal */
+  vertical-align: middle; /* Rata tengah secara vertikal */
+}

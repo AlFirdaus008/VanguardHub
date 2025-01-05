@@ -1,0 +1,498 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+
+  body {
+    background-color: #18191a ;
+    height: 100vh; /* Full page height */
+    margin: 0;
+  }  
+  @import url("https://fonts.googleapis.com/css2?family=Mohave:ital,wght@0,300..700;1,300..700&family=Poppins:wght@400;500;600;700&display=swap");
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  body {
+    background: #18191a;
+    height: 100vh; /* Full page height */
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .sidebar {
+    width: 270px !important;
+    position: fixed !important;
+    margin: 16px !important;
+    border-radius: 16px  !important;
+    background: #242526  !important;
+    height: 100vh  !important; /* Sidebar should take full height */
+    transition: 0.4s ease  !important;
+  }
+  
+  .sidebar.close {
+    text-shadow: none !important;
+    z-index: 1000 !important;
+    opacity: 1 !important;
+    width: 85px  !important;
+  }
+  
+  .sidebar-header {
+    position: relative  !important;
+    display: flex !important;
+    padding: 25px 20px !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 1rem !important;
+  }
+  
+  .sidebar-header .header-logo img {
+    width: 46px !important;
+    height: 46px !important;
+    display: block !important;
+    object-fit: contain !important;
+    border-radius: 50% !important;
+  }
+  
+  .sidebar-header .toggler {
+    position: absolute !important;
+    right: 20px !important;
+    height: 35px !important;
+    width: 35px !important;
+    border: none !important;
+    color: #fff !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    border-radius: 8% !important;
+    background: #18191a !important;
+    transition: all 0.4s ease !important;
+  }
+  
+  .sidebar.close .sidebar-header .toggler {
+    transform: translate(-4px, 65px) rotate(180deg) !important;
+  }
+  
+  .sidebar-header .toggler:hover {
+    background: #dde4fb !important;
+  }
+  
+  .sidebar-header .toggler span {
+    font-size: 1.75rem !important;
+    transition: 0.4s ease !important;
+  }
+  
+  .sidebar-header .sidebar-header .toggler span {
+    transform: rotate(180deg) !important;
+  }
+  
+  .sidebar-nav .nav-list {
+    list-style: none !important;
+    display: flex !important;
+    gap: 4px !important;
+    padding: 0 15px !important;
+    flex-direction: column !important;
+    transition: translateY(15px) !important;
+    transition: 0.4s ease !important;
+  }
+  
+  .sidebar.close .sidebar-nav .primary-nav {
+    transform: translateY(65px) !important;
+  }
+  
+  .sidebar-nav .nav-link {
+    color: #fff !important;
+    display: flex !important;
+    gap: 12px !important;
+    white-space: nowrap !important;
+    border-radius: 8px !important;
+    align-items: center !important;
+    padding: 12px 15px !important;
+    text-decoration: none !important;
+    transition: 0.4s ease !important;
+  }
+  
+  .sidebar-nav .nav-link:hover {
+    color: #151a2d !important;
+    background: #fff !important;
+  }
+  
+  .sidebar-nav .nav-item {
+    position: relative !important;
+  }
+  
+  .sidebar-nav .nav-tooltip {
+    position: absolute !important;
+    top: -10px !important;
+    opacity: 0 !important;
+    display: none !important;
+    pointer-events: none !important;
+    left: calc(100% + 25px) !important;
+    color: #151a2d !important;
+    padding: 6px 12px !important;
+    border-radius: 8px !important;
+    background: #fff !important;
+    white-space: nowrap !important;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3) !important;
+  }
+  
+  .sidebar.close .sidebar-nav .nav-tooltip {
+    display: block !important;
+  }
+  
+  .sidebar-nav .nav-item:hover .nav-tooltip {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    transform: translateY(50%) !important;
+    transition: 0.4s ease !important;
+  }
+  
+  .sidebar-nav .secondary-nav {
+    position: absolute !important;
+    bottom: 30px !important;
+    width: 100% !important;
+  }
+  
+  .header {
+    max-height: 80px;
+    width: 100%; /* Take full width */
+    padding: 20px;
+    text-align: center;
+    background-color: #242526;
+    border-radius: 10px;
+    position: absolute; /* Position navbar inside the header */
+    top: 16px; /* Align to top of the header */
+    margin: 0 auto;
+    z-index: 10;
+    display: flex; /* Align header content flexibly */
+    align-items: center; /* Center items vertically */
+    justify-content: space-between; /* Separate title and navbar */
+  }
+  
+  .header h1 {
+    margin-left:206px;
+    color: #ffdd45;
+    font-size: 2rem;
+    font-weight: 700;
+    flex-grow: 1;
+  }
+  
+  .navbar {
+    background: #242526;
+    border-radius: 16px;
+    padding: 8px 16px; /* Adjust padding */
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    z-index: 1000;
+    position: static; /* No need for fixed position here */
+    margin: 0; /* Remove any external margins */
+    width: auto; /* Allow dynamic width */
+    min-height: 80px;
+  }
+  
+  .navbar-nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 15px; /* Add spacing between nav items */
+    margin: 0;
+    padding: 0;
+    list-style: none; /* Remove list styling */
+  }
+  
+  
+  .nav-container {
+    font-weight: bold !important;
+    width: auto !important;
+    display: grid !important;
+    color: #ffffff !important;
+    align-items: center !important;
+    grid-template-columns: 2fr 5fr !important;
+    background-color: transparent !important;
+    border-radius: 0.3em !important;
+    text-align: center !important;
+    justify-content: flex-start !important;
+    flex-grow: 1 !important;
+  }
+  
+  .navbar a.nav-link {
+    color: #fff !important;
+    display: flex !important;
+    align-items: center !important;
+    text-decoration: none !important;
+    border-radius: 8px !important;
+    padding: 8px 12px !important;
+    transition: 0.4s ease !important;
+  }
+  
+  .navbar a.nav-link:hover {
+    color: #151a2d !important;
+    background: #fff !important;
+  }
+  
+  .navbar .avatar img {
+    width: 33px !important;
+    height: 33px !important;
+    border-radius: 50% !important;
+    object-fit: cover !important;
+    transition: all 0.3s ease !important;
+    margin-left: 15px !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+  
+  .navbar .avatar:hover img {
+    transform: scale(1.1) !important; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5) !important; 
+    border: 2px solid #fff !important; 
+    opacity: 0.9 !important; 
+  }
+  
+  .navbar .navbar-nav {
+    list-style: none !important;
+    display: flex !important;
+    gap: 5px !important;
+  }
+  
+  
+    .sidebar-nav .nav-link .nav-label {
+      transition: opacity 0.4s ease !important;
+    }
+    
+    .sidebar.close .sidebar-nav .nav-link .nav-label {
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
+    
+    .nav-container-fluid {
+      display: flex !important;
+      align-items: center !important;
+      flex: 1  !important;
+  }
+  
+.container {
+    flex-grow: 1;
+    padding: 20px 40px;
+    position: relative;
+    top: 0;
+    left: 335px;
+    height: 100vh;
+    width: calc(100% - 350px); /* Width minus sidebar */
+    transition: 0.4s ease;
+    padding-top: 190px; /* Tambahkan ruang untuk header */
+}
+.sidebar.close ~ .container {
+    left: 150px;
+    height: 100vh;
+    width: calc(100% - 100px);
+  }
+
+
+#calendar-container {
+    margin: 20px auto;
+    margin-top: -50px;
+    background-color: #242526;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;  /* Set width as 80% of the container */
+    height: 60vh;  /* Set height to 60% of the viewport height */
+}
+
+/* FullCalendar styles */
+.fc-toolbar {
+    background-color: #242526;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* FullCalendar Toolbar styling */
+.fc-toolbar {
+background-color: #242526;
+color: white;
+padding: 10px;
+border-radius: 5px;
+}
+
+.fc-toolbar-title {
+color: #ffdd45;
+}
+/* FullCalendar buttons (Month, Week, Day, etc.) */
+.fc .fc-toolbar .fc-button {
+background-color: #ffdd45 !important;  
+color: #18191a !important;             
+border: none !important;               
+border-radius: 3px !important;         
+transition: background-color 0.3s, color 0.3s;
+}
+
+/* Hover effect for buttons */
+.fc .fc-toolbar .fc-button:hover {
+background-color: #b4a44f !important;  
+color: #18191a !important;            
+}
+
+/* Active (selected) state for buttons */
+.fc .fc-toolbar .fc-button-active {
+background-color: #ac943c !important;  
+font-weight: bold !important;                       
+}
+
+/* Focus state for buttons */
+.fc .fc-toolbar .fc-button:focus {
+outline: none !important;              /* Remove default focus outline */
+box-shadow: 0 0 0 2px #ffdd45 !important;  /* Custom focus outline */
+}
+
+/* General styles for the day numbers in the table */
+.fc .fc-daygrid-day-number {
+color: #ffdd45 !important; /* Change the day numbers to white */
+font-weight: bold; /* Optionally make the day numbers bold */
+}
+
+.fc .fc-col-header-cell-cushion {
+color: #ffdd45 !important;
+}
+
+/* Event text color inside the calendar */
+.fc .fc-h-event {
+
+  background-color: #1d4e4c !important; /* Change the event text color to your preferred color (e.g., yellow) */
+}        
+
+.fc-button-primary {
+    background-color:#ffdd45;
+    color: #ffffff;
+    border: none;
+    border-radius: 3px;
+    transition: background-color 0.3s;
+}
+
+.fc-button-primary:hover {
+    background-color:#ffdd45;
+    color: #e5e5e5;
+}
+
+.fc-daygrid-day {
+    background-color: #242526;
+    border: 1px solid #bdc3c7;
+}
+
+.fc-day-today {
+    background-color: #1d4e4c !important;
+    color: white;
+}
+/* Style for the modal background */
+.modal-content {
+    background-color: #18191a; /* Light grey background */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Shadow around the modal */
+}
+
+/* Modal header styles */
+.modal-header {
+    background-color: #18191a; /* Blue background */
+    color: white; /* White text */
+    border-top-left-radius: 10px; /* Rounded top left corner */
+    border-top-right-radius: 10px; /* Rounded top right corner */
+}
+
+.modal-title {
+    color: #ffdd45;
+    font-size: 18px; /* Larger title */
+}
+
+/* Modal body styling */
+.modal-body {
+    padding: 20px;
+}
+
+/* Form label styling */
+.modal-body label {
+    color: #ffdd45;
+    font-weight: bold;
+}
+
+/* Style for the form inputs */
+.modal-body .form-control {
+    background-color: #242526;
+    border-radius: 5px; /* Rounded input fields */
+    border: 1px solid #ccc; /* Border color */
+    padding: 10px; /* Padding inside the input */
+    font-size: 14px; /* Smaller font size */
+    color: #ffdd45;
+}
+
+/* Style for the Save and Delete buttons */
+#save-event, #delete-event {
+    border-radius: 5px;
+    padding: 8px 16px;
+}
+
+#save-event {
+    background-color: #28a745; /* Green background */
+    color: white;
+}
+
+#save-event:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+#delete-event {
+    background-color: #dc3545; /* Red background */
+    color: white;
+}
+
+#delete-event:hover {
+    background-color: #c82333; /* Darker red on hover */
+}
+
+/* Normal state */
+.btn-primary {
+background-color: #ffdd45;
+color: #242526;
+border: none;
+border-radius: 2px;
+transition: background-color 0.3s;
+}
+
+/* Hover state */
+.btn-primary:hover {
+color: #242526;
+background-color: #b4a44f;
+}
+
+/* Active state (when the button is clicked) */
+.btn-primary:active, 
+.btn-primary:focus, 
+.btn-primary.active {
+background-color: #ffdd45 !important; /* Ensure background stays #ffdd45 */
+color: #242526;
+border: none;
+outline: none;
+box-shadow: none; /* Optionally remove shadow on click */
+}
+
+/* Optionally override Bootstrap focus outline */
+.btn-primary:focus {
+color: #242526;
+border: none;
+outline: none;
+box-shadow: 0 0 0 2px #ffdd45; /* Custom outline on focus */
+}
+
+
+/* Close button styling */
+.close {
+    color: #fff; /* White color */
+    font-size: 1.5rem; /* Larger close icon */
+}

@@ -5,22 +5,19 @@ from datetime import datetime, timedelta
 
 
 activity_feed_bp = Blueprint('activity_feed', __name__)
-file_path_activity = os.path.join(os.getcwd(),'projek', 'data', 'activity.csv')
-file_path_profile = os.path.join(os.getcwd(),'projek', 'data', 'profile.csv')
+file_path_activity = os.path.join(os.getcwd(),'data', 'activity.csv')
+file_path_profile = os.path.join(os.getcwd(),'data', 'profile.csv')
 
 @activity_feed_bp.route('/activity_feed')
 def activity():
     numid = session['numid']
     activities = []
 
-    data = get_user_photo(numid)
-    photo = data.get('Photo') if data else None
-
     if os.path.exists(file_path_activity):
         with open(file_path_activity, 'r') as file:
             reader = csv.DictReader(file, delimiter=';')
             for row in reader:
-                row['Photo'] = photo
+                row['Photo'] = f"uploads/{row['NIM']}_profile.jpg"
                 # Parse the timestamp into a datetime object
                 row['Timestamp'] = datetime.strptime(row['Timestamp'], '%Y-%m-%d %H:%M:%S')
                 activities.append(row)
@@ -97,7 +94,6 @@ def get_activity_badge(activity_type, nim):
         return activity_url_map[activity_type]
     return None
 
-def get_user_photo(nim):
     with open(file_path_profile, mode='r') as file:
         csv_reader = csv.reader(file, delimiter=';')
         for row in csv_reader:

@@ -12,8 +12,8 @@ from activity import log_activity
 
 profile_bp = Blueprint('profile', __name__)
 
-file_path_users = os.path.join(os.getcwd(),'projek', 'data', 'users.csv')
-file_path_profile = os.path.join(os.getcwd(),'projek', 'data', 'profile.csv')
+file_path_users = os.path.join(os.getcwd(),'data', 'users.csv')
+file_path_profile = os.path.join(os.getcwd(),'data', 'profile.csv')
 
 @profile_bp.route('/<nim>')
 def profile(nim):
@@ -52,7 +52,7 @@ def get_user_profile(nim):
                     'Email': row[7],
                     'Nickname': row[8], 
                     'About': row[9], 
-                    'Photo': row[10].replace('\\', '/'),
+                    'Photo': f"uploads/{row[2]}_profile.jpg",
                     'Linkname': row[11],
                     'Links': row[12]
                 }

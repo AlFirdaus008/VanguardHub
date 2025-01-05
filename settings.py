@@ -6,8 +6,8 @@ import os
 
 settings_bp = Blueprint('settings', __name__)
 
-file_path_users = os.path.join(os.getcwd(),'projek', 'data', 'users.csv')
-file_path_profile = os.path.join(os.getcwd(),'projek', 'data', 'profile.csv')
+file_path_users = os.path.join(os.getcwd(),'data', 'users.csv')
+file_path_profile = os.path.join(os.getcwd(),'data', 'profile.csv')
 
 # Helper function to update email in CSV
 import csv

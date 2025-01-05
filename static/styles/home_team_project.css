@@ -1,0 +1,195 @@
+/* Styling untuk body-courses */
+.container-courses {
+  margin-top: -8rem;
+}
+.body-courses {
+  flex-grow: 1;
+  padding: 20px 60px;
+  position: relative;
+  top: 0;
+  left: 300px; /* Set left margin untuk memberi ruang sidebar */
+  min-height: 100vh;
+  width: calc(100% - 300px); /* Width minus sidebar */
+  transition: 0.4s ease;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column; /* Mengatur agar konten ditata secara vertikal */
+  background: #18191a;
+  padding-top: 80px; /* Tambahkan ruang untuk header */
+}
+
+.sidebar.close ~ .body-courses {
+  left: 100px;
+  height: 100vh;
+  width: calc(100% - 100px);
+}
+
+
+
+/* Styling untuk card list menggunakan CSS Grid */
+.card-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Membuat 3 kolom */
+  gap: 20px;
+  max-width: 1200px;
+  margin-top: 80px; /* Space antara header dan card pertama */
+  margin-left: auto; /* Pusatkan kartu */
+  margin-right: auto; /* Pusatkan kartu */
+}
+
+/* Styling untuk card-item */
+.card-list .card-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-list .card-link {
+  width: 100%;
+  background: #242526;
+  padding: 18px;
+  border-radius: 12px;
+  text-decoration: none;
+  border: 2px solid transparent;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
+  transition: 0.4s ease;
+}
+
+.card-list .card-item .card-link:hover {
+  border-color: #ffdd45;
+}
+
+.card-list .card-link .card-image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.card-list .card-link .badge {
+  color: #ffdd45;
+  padding: 8px 16px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin: 16px 0 18px;
+  background: #18191a;
+  width: fit-content;
+  border-radius: 50px;
+}
+
+.card-list .card-link .card-title {
+  font-size: 1.19rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.card-list .card-link .card-button {
+  height: 35px;
+  width: 35px;
+  color: #ffdd45;
+  border-radius: 50%;
+  margin: 30px 0 5px;
+  background: none;
+  cursor: pointer;
+  border: 2px solid #ffdd45;
+  transform: rotate(-45deg);
+}
+
+.card-list .card-link:hover .card-button {
+  color: #fff;
+  background: linear-gradient(135deg, #d25541, #ffdd45);
+}
+
+.card-link {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Untuk baris terakhir, pastikan ia memiliki satu kolom penuh */
+.card-list .card-item:last-child {
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 100%;
+}
+
+/* Tombol Plus */
+.dropup {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 50;
+}
+
+.dropup-button {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  background: #ffdd45;
+  color: #000;
+  border: none;
+  cursor: pointer;
+  font-size: 36px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  transition: 0.3s ease;
+}
+
+.dropup-button:hover {
+  background: #d25541;
+}
+
+/* Dropup Menu */
+.dropup-content {
+  position: absolute;
+  bottom: 80px;
+  right: 0;
+  background: #242526;
+  border-radius: 12px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  display: none;
+  flex-direction: column;
+}
+
+.dropup-content .dropup-item {
+  background: none;
+  color: #fff;
+  border: none;
+  text-align: left;
+  padding: 10px;
+  margin: 5px 0;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.dropup-content .dropup-item:hover {
+  background: #ffdd45;
+  color: #000;
+}
+
+/* Tampilkan Dropup Menu */
+.dropup.open .dropup-content {
+  display: flex;
+}
+
+/* Responsivitas - 1024px - Tablet Landscape dan Laptop kecil */
+@media (max-width: 1024px) {
+  .card-list {
+    grid-template-columns: repeat(2, 1fr); /* 2 kartu per baris */
+  }
+}
+
+/* Responsivitas - 768px - Tablet dan perangkat lebih kecil */
+@media (max-width: 768px) {
+  .card-list {
+    grid-template-columns: repeat(1, 1fr); /* 1 kartu per baris */
+  }
+}
+
+/* Responsivitas - 480px - Perangkat Mobile */
+@media (max-width: 480px) {
+  .header h1 {
+    font-size: 1.5rem; /* Ukuran font lebih kecil pada layar kecil */
+  }
+}

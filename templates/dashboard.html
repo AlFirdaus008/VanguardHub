@@ -5,255 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard Menu | Vanguard Hub</title>
     <link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='styles/sidebars.css') }}"
+  />
+    <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     />
-<style>
-  @import url("https://fonts.googleapis.com/css2?family=Mohave:ital,wght@0,300..700;1,300..700&family=Poppins:wght@400;500;600;700&display=swap");
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-}
-
-body {
-  background: #18191a;
-  height: 100vh; /* Full page height */
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-}
-
-.sidebar {
-  width: 270px !important;
-  position: fixed !important;
-  margin: 16px !important;
-  border-radius: 16px  !important;
-  background: #242526  !important;
-  height: 100vh  !important; /* Sidebar should take full height */
-  transition: 0.4s ease  !important;
-}
-
-.sidebar.close {
-  width: 85px  !important;
-}
-
-.sidebar-header {
-  position: relative  !important;
-  display: flex !important;
-  padding: 25px 20px !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  padding: 1rem !important;
-}
-
-.sidebar-header .header-logo img {
-  width: 46px !important;
-  height: 46px !important;
-  display: block !important;
-  object-fit: contain !important;
-  border-radius: 50% !important;
-}
-
-.sidebar-header .toggler {
-  position: absolute !important;
-  right: 20px !important;
-  height: 35px !important;
-  width: 35px !important;
-  border: none !important;
-  color: #fff !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  cursor: pointer !important;
-  border-radius: 8% !important;
-  background: #18191a !important;
-  transition: all 0.4s ease !important;
-}
-
-.sidebar.close .sidebar-header .toggler {
-  transform: translate(-4px, 65px) rotate(180deg) !important;
-}
-
-.sidebar-header .toggler:hover {
-  background: #dde4fb !important;
-}
-
-.sidebar-header .toggler span {
-  font-size: 1.75rem !important;
-  transition: 0.4s ease !important;
-}
-
-.sidebar-header .sidebar-header .toggler span {
-  transform: rotate(180deg) !important;
-}
-
-.sidebar-nav .nav-list {
-  list-style: none !important;
-  display: flex !important;
-  gap: 4px !important;
-  padding: 0 15px !important;
-  flex-direction: column !important;
-  transition: translateY(15px) !important;
-  transition: 0.4s ease !important;
-}
-
-.sidebar.close .sidebar-nav .primary-nav {
-  transform: translateY(65px) !important;
-}
-
-.sidebar-nav .nav-link {
-  color: #fff !important;
-  display: flex !important;
-  gap: 12px !important;
-  white-space: nowrap !important;
-  border-radius: 8px !important;
-  align-items: center !important;
-  padding: 12px 15px !important;
-  text-decoration: none !important;
-  transition: 0.4s ease !important;
-}
-
-.sidebar-nav .nav-link:hover {
-  color: #151a2d !important;
-  background: #fff !important;
-}
-
-.sidebar-nav .nav-item {
-  position: relative !important;
-}
-
-.sidebar-nav .nav-tooltip {
-  position: absolute !important;
-  top: -10px !important;
-  opacity: 0 !important;
-  display: none !important;
-  pointer-events: none !important;
-  left: calc(100% + 25px) !important;
-  color: #151a2d !important;
-  padding: 6px 12px !important;
-  border-radius: 8px !important;
-  background: #fff !important;
-  white-space: nowrap !important;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3) !important;
-}
-
-.sidebar.close .sidebar-nav .nav-tooltip {
-  display: block !important;
-}
-
-.sidebar-nav .nav-item:hover .nav-tooltip {
-  opacity: 1 !important;
-  pointer-events: auto !important;
-  transform: translateY(50%) !important;
-  transition: 0.4s ease !important;
-}
-
-.sidebar-nav .secondary-nav {
-  position: absolute !important;
-  bottom: 30px !important;
-  width: 100% !important;
-}
-
-.navbar {
-  position: fixed !important;
-  top: 16px !important;
-  right: 16px !important;
-  background: #242526 !important;
-  border-radius: 16px !important;
-  padding: 16px !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: flex-end !important;
-  min-height: 60px !important;
-  width: auto
-}
-
-.navbar-nav{
-  display: flex !important;
-  align-items: center !important;
-  justify-content: flex-end !important;
-  margin-left: auto !important;
-}
-
-.nav-container {
-  font-weight: bold !important;
-  width: auto !important;
-  display: grid !important;
-  color: #ffffff !important;
-  align-items: center !important;
-  grid-template-columns: 2fr 5fr !important;
-  background-color: transparent !important;
-  border-radius: 0.3em !important;
-  text-align: center !important;
-  justify-content: flex-start !important;
-  flex-grow: 1 !important;
-}
-
-.sidebar.close ~ .navbar {
-  width: calc(100% - 130px) !important; /* Adjust the width when the sidebar is closed */
-}
-.navbar a.nav-link {
-  color: #fff !important;
-  display: flex !important;
-  align-items: center !important;
-  text-decoration: none !important;
-  border-radius: 8px !important;
-  padding: 8px 12px !important;
-  transition: 0.4s ease !important;
-}
-
-.navbar a.nav-link:hover {
-  color: #151a2d !important;
-  background: #fff !important;
-}
-
-.navbar .avatar img {
-  width: 33px !important;
-  height: 33px !important;
-  border-radius: 50% !important;
-  object-fit: cover !important;
-  transition: all 0.3s ease !important;
-  margin-left: 15px !important;
-  display: flex !important;
-  align-items: center !important;
-}
-
-.navbar .avatar:hover img {
-  transform: scale(1.1) !important; 
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5) !important; 
-  border: 2px solid #fff !important; 
-  opacity: 0.9 !important; 
-}
-
-.navbar .navbar-nav {
-  list-style: none !important;
-  display: flex !important;
-  gap: 5px !important;
-}
-
-
-  .sidebar-nav .nav-link .nav-label {
-    transition: opacity 0.4s ease !important;
-  }
-  
-  .sidebar.close .sidebar-nav .nav-link .nav-label {
-    opacity: 0 !important;
-    pointer-events: none !important;
-  }
-
-  
-
-  
-  .nav-container-fluid {
-    display: flex !important;
-    align-items: center !important;
-    flex: 1  !important;
-}
-
-</style>
+    <link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='styles/dashboard.css') }}"
+  />
 
   </head>
   <aside class="sidebar">
@@ -355,6 +117,30 @@ body {
       </ul>
     </nav>
   </div>
+  <main class="main">
+    <h1>Welcome, {{ user }}!</h1>
+    <!-- Username placeholder from backend -->
+    <p>Today is : <span id="current-date"></span></p>
+
+    <div class="container-dashboard">
+      <!-- TABLE TUGAS KELAS -->
+      <table>
+        <thead>
+          <th>Checklist</th>
+          <th>Nama Tugas</th>
+          <th>Deadline</th>
+          <th>Sumber Materi</th>
+          <th>Link Pengumpulan</th>
+        </thead>
+        <tbody id="taskTableBody">
+          <!-- Tugas akan ditambahkan di sini -->
+        </tbody>
+      </table>
+
+      <div id="balance"></div>
+    </div>
+    <!-- Date placeholder -->
+  </main>
 </div>
   <script>
     const sidebar = document.querySelector(".sidebar");
@@ -365,5 +151,6 @@ body {
     });
   </script>
   <script src="{{url_for('static', filename='scripts/sidebars.js')}}"></script>
+  <script src="{{url_for('static', filename='scripts/dashboard.js')}}"></script>
   </body>
 </html>

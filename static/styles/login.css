@@ -1,0 +1,392 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: 'Poppins', sans-serif;
+}
+body{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+min-height: 100vh;
+background-color: #000524;
+}
+.wrapper{
+position: relative;
+width: 750px;
+height: 450px;
+background: #000118;
+border-radius: 6px;
+box-shadow: 0 0 25px;
+overflow: hidden;
+}
+.wrapper .form-box{
+position: absolute;
+top: 0;
+width: 50%;
+height: 100%;
+display: flex;
+flex-direction: column;
+justify-content: center;
+
+}
+.wrapper .form-box.login{
+left: 0;
+padding: 0 60px 0 40px;
+}
+.wrapper .form-box.login .animation{
+transform: translateX(0);
+transition: .7s ease;
+opacity: 1;
+filter: blur(0);
+
+}
+.wrapper.active .form-box.login .animation{
+transform: translateX(-120%);
+transition-delay: calc(.1s * var(--data));
+opacity: 0;
+filter: blur(10px);        
+}
+
+.wrapper.active .divider.animation {
+    transform: translateX(-120%);
+    transition-delay: calc(0.1s * var(--data));
+    opacity: 0;
+    filter: blur(10px);
+}
+
+.wrapper .form-box.signup{
+right: 0;
+padding: 0 40px 0 60px;
+
+}
+.wrapper .form-box.signup .animation{
+transform: translateX(120%);
+transition: .7s;
+}
+.wrapper.active .form-box.signup .animation{
+transform: translateX(0);
+transition-delay: calc(.1s * var(--data));
+}
+            /* Modal styling */
+.modal-content {
+background-color: white;
+padding: 20px;
+border: 1px solid #888;
+width: 350px;
+position: relative;
+}
+
+/* Display modal centered */
+#forgot-password-modal {
+position: fixed;
+z-index: 1;
+left: 50%;
+top: 50%;
+transform: translate(-50%, -50%);
+width: 100%;
+max-width: 400px;
+padding: 20px;
+border: 1px solid #888;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+background-color: white;
+}
+
+/* Close button */
+#close-modal {
+position: absolute;
+top: 10px;
+right: 10px;
+cursor: pointer;
+}
+
+.form-box h2{
+font-size: 32px;
+background-image: linear-gradient(to bottom, #ff4081 0%, #f9a825 60%); 
+-webkit-background-clip: text; 
+background-clip: text;
+color: transparent;
+text-align: center;
+}
+.form-box .input-box{
+position: relative;
+width: 100%;
+height: 45px;
+margin: 25px 0;
+}
+.input-box input{
+width: 100%;
+height: 100%;
+background: transparent;
+border: none;
+outline: none;
+border-bottom: 2px solid #04fdd0;
+background-image: linear-gradient(to bottom, #ff4081 0%, #f9a825 60%);  
+-webkit-background-clip: text; 
+background-clip: text;
+color: transparent; 
+}
+.input-box label{
+position: absolute;
+top: 50%;
+left: 0;
+transform: translateY(-50%);
+background-image: linear-gradient(to bottom, #0780c9 20%, #04fdd0 95%); 
+-webkit-background-clip: text; 
+background-clip: text;
+color: transparent; 
+pointer-events: none;
+font-size: 16px;
+transition: .5s;
+}
+
+.input-box input:focus~label,
+.input-box input:not(:placeholder-shown)~label {
+top: -5px;
+color: #046a97;
+}
+
+.divider {
+    width: 100%;
+    margin-block: 10px;
+    position: relative;
+}
+.divider p {
+    text-align: center;
+    background-image: linear-gradient(to bottom, #0780c9 20%, #04fdd0 95%);
+    -webkit-background-clip: text; 
+    background-clip: text;
+    color: transparent;
+    font-weight: 600;
+    justify-content: center;
+}
+.divider p::before,
+.divider p::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 45%;
+    height: 1px;
+    background-color: #333639;
+}
+
+.divider p::before {
+    left: 0;
+}
+
+.divider p::after {
+    right: 0;
+}
+.divider.animation {
+    opacity: 1;
+    transform: translateX(0);
+    transition: 0.7s ease;
+    filter: blur(0);
+}
+
+.input-box i{
+position: absolute;
+top: 50%;
+right: 0;
+transform: translateY(-50%);
+background-image: linear-gradient(to bottom, #0780c9 20%, #04fdd0 95%); 
+-webkit-background-clip: text; 
+background-clip: text;
+color: transparent;
+font-size: 18px;
+transition: .5s;
+}
+.btn {
+    position: relative;
+    width: 100%;
+    height: 45px;
+    background: #040929;
+    color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    border: 1px solid #f9a825;
+    transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out; /* For smooth background transition */
+}
+
+/* Define keyframes for hover animation */
+@keyframes hoverFloat {
+    0% {
+        transform: translateY(0); /* Initial position */
+    }
+    100% {
+        transform: translateY(-5px); /* Move up by 20px when hovered */
+    }
+}
+
+/* Apply animation only when the button is hovered */
+.btn:hover {
+    background: #000229;
+    border-color: #ff4081;
+    animation: hoverFloat 0.3s ease forwards; /* Trigger animation on hover */
+}
+
+.btn p,
+.btn a,
+.btn i{
+background-image: linear-gradient(to bottom, #ff4081 0%, #f9a825 60%); 
+-webkit-background-clip: text; 
+background-clip: text;
+color: transparent;
+}
+.form-box .reg-link{
+font-size: 14.5px;
+background-image: linear-gradient(to bottom, #0780c9 0%, #04fdd0 70%); 
+-webkit-background-clip: text; 
+background-clip: text;
+color: transparent; 
+text-align: center;
+margin: 20px 0 10px;
+}
+.reg-link p a {
+    background-image: linear-gradient(to bottom, #ff4081 0%, #f9a825 60%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-decoration: none;
+    font-weight: 600;
+    position: relative; 
+}
+
+
+.reg-link p a:hover {
+    text-decoration: none; 
+}
+
+.reg-link p a:hover::after {
+    content: ''; 
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px; 
+    background-image: linear-gradient(to bottom, #ff4081 0%, #f9a825 60%); /* Match the gradient with the text */
+}
+.wrapper .info-text{
+position: absolute;
+width: 50%;
+height: 100%;
+top: 50%;
+transform: translateY(-50%);
+
+display: flex;
+flex-direction: column;
+justify-content: center;
+}
+.wrapper .info-text.login{
+right: 0;
+text-align: right;
+padding: 0 40px 60px 150px;
+}
+.wrapper .info-text.signup{
+left: 0;
+text-align: left;
+padding: 0 150px 60px 40px;
+pointer-events: none;
+}
+.wrapper .info-text.signup .animation{
+transform: translateX(-120%);
+transition: .7s ease;
+}
+.wrapper.active .info-text.signup .animation{
+transform: translateX(0);
+transition-delay: calc(.1s * var(--data));
+}
+
+.info-text h2{
+font-size: 36px;
+line-height: 1.4;
+text-transform: uppercase;
+background-image: linear-gradient(to bottom, #ff4081 0%, #f9a825 80%);
+-webkit-background-clip: text;
+background-clip: text;
+color: transparent;
+}
+.info-text p{
+font-size: 16px;
+background-image: linear-gradient(to bottom, #0780c9 0%, #04fdd0 70%); 
+-webkit-background-clip: text; 
+background-clip: text;
+color: transparent; 
+}
+.wrapper .info-text.login .animation{
+transform: translateX(0);
+transition: .7s ease;
+opacity: 1;
+filter: blur(0);
+
+}
+.wrapper.active .info-text.login .animation{
+transform: translateX(120%);
+transition-delay: calc(.1s * var(--data));
+opacity: 0;
+filter: blur(10px);
+
+}
+.wrapper .bg-animate{
+position: absolute;
+top: -4px;
+right: 0;
+width: 850px;
+height: 600px;
+background: #040929;
+transform: rotate(10deg)skewY(40deg);
+transform-origin: bottom right;
+transition: 1.5s ease;
+}
+.wrapper.active .bg-animate{
+transform: rotate(0deg)skewY(0deg);
+transition-delay: .5s;
+}
+.wrapper .bg-animate2{
+position: absolute;
+top: 100%;
+left: 250px;
+width: 850px;
+height: 700px;
+background: #000118;
+transform: rotate(0deg)skewY(0deg);
+transform-origin: bottom left; 
+transition: 1.5s ease;
+}
+
+.wrapper.active .bg-animate2{
+transform: rotate(-11deg)skewY(-41deg);
+transition-delay: 1.2s;
+}
+.flashes {
+    opacity: 0;
+    transform: translateX(120%);
+    transition: 0.7s ease;
+    filter: blur(10px);
+}
+
+.wrapper.active .flashes {
+    transform: translateX(0);
+    transition-delay: calc(0.1s * var(--data));
+    opacity: 1;
+    filter: blur(0);
+}
+
+@media (max-width: 600px) {
+    .container {
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+    }
+
+    .text-box, .main-content {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #e6e6e6;
+    }
+}
