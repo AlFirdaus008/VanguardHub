@@ -1,4 +1,4 @@
-from . import create_app
+from webb import create_app
 #test
 app = create_app()
 
