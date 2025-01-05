@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Vanguard Hub</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/login.css') }}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+
+    </style>
+</head>
+<body>
+    
+    <div class="wrapper">
+        <!-- Background animation spans -->
+        <span class="bg-animate"></span>
+        <span class="bg-animate2"></span>
+
+        <!-- Login form container -->
+        <div class="form-box login">
+            <h2 class="animation" style="--data:0;">Login</h2>
+            <form method="POST" action="{{ url_for('login.login') }}">
+                <input type="hidden" name="form_action" value="login">
+                <!-- Username input -->
+                <div class="input-box animation" style="--data:1;">
+                    <input type="text" name="numid" placeholder="">
+                    <label>Student ID</label>
+                    <i class="fa-solid fa-user"></i> <!-- User icon -->
+                </div>
+
+                <!-- Password input -->
+                <div class="input-box animation" style="--data:3;">
+                    <input type="password" name="password" placeholder="">
+                    <label>Password</label>
+                    <i class="fa-solid fa-lock"></i> <!-- Lock icon -->
+                </div>
+
+                <!-- Submit button -->
+                <button type="submit" class="btn animation" style="--data:4">
+                    <p>Login</p>
+                </button>
+                <div class="divider animation" style="--data:4;">
+                    <p>or</p>
+                </div>    
+            <button class="btn animation" style="--data:4;">
+                <a href="#" id="forgot-password-link" style="text-decoration: none;">Forgot the password? </a>
+            </button>
+                {% with messages = get_flashed_messages(with_categories=True) %}
+                    {% if messages %}
+                    <div class="flashes animation" style="--data:5;">
+                        {% for category, message in messages %}
+                            <p class="{{ category }}" style="color: red; font-weight: light; font-size: 10px;">{{ message }}</p>
+                        {% endfor %}
+                        </div>
+                    {% endif %}
+                {% endwith %}
+                <!-- Link to sign-up form -->
+                <div class="reg-link animation" style="--data:4;">
+                    <p>Don't have an account? <a href="#" class="signup-link">Sign Up</a></p>
+                </div>
+            </form>
+        </div>
+        
+        <div id="forgot-password-modal" style="display: none;">
+            <div class="modal-content">
+                <span id="close-modal">&times;</span>
+                <h2>Reset Your Password</h2>
+                <form id="forgot-password-form">
+                    <label for="email">Enter your email address:</label>
+                    <input type="email" id="email" name="email" required>
+                    <button type="submit">Send Reset Link</button>
+                </form>
+            </div>
+        </div>
+        <!-- Welcome back message for login -->
+        <div class="info-text login">
+            <h2 class="animation" style="--data:0;">Welcome</h2>
+            <h2 class="animation" style="--data:0;">Back!</h2>
+            <p class="animation" style="--data:1">What's your name</p>
+            <p class="animation" style="--data:1">again?.</p>
+        </div>
+
+        <!-- Sign-Up form container -->
+        <div class="form-box signup">
+            <h2 class="animation">Sign Up</h2>
+            <form method="POST" action="{{ url_for('login.login') }}">
+                <input type="hidden" name="form_action" value="signup">
+                <!-- Username input -->
+                <div class="input-box animation" style="--data:17">
+                    <input type="text" name="numid" placeholder="">
+                    <label>Student ID</label>
+                    <i class="fa-solid fa-user"></i> <!-- User icon -->
+                </div>
+
+                <!-- Email input -->
+                <div class="input-box animation" style="--data:18">
+                    <input type="email" name="email" placeholder="">
+                    <label>Email</label>
+                    <i class="fa-solid fa-envelope"></i> <!-- Envelope icon -->
+                </div>  
+
+                <!-- Password input -->
+                <div class="input-box animation" style="--data:19">
+                    <input type="password" name="password" placeholder="">
+                    <label>Password</label>
+                    <i class="fa-solid fa-lock"></i> <!-- Lock icon -->
+                </div>
+
+                <!-- Submit button -->
+                <button type="submit" class="btn animation" style="--data:20">
+                    <p>Sign Up</p>
+                </button>
+
+                <!-- Link to login form -->
+                <div class="reg-link animation" style="--data:21">
+                    <p>Already have an account? <a href="#" class="login-link">Login</a></p>
+                </div>
+            </form>
+        </div>
+
+        <!-- Welcome back message for signup -->
+        <div class="info-text signup">
+            <h2 class="animation" style="--data:22">Howdy!</h2>
+            <p class="animation" style="--data:23">First time here? Let's</p>
+            <p class="animation" style="--data:23">get started.</p>
+        </div>
+    </div>
+
+    <script src="{{url_for('static', filename='scripts/login.js')}}"></script>
+</body>
+</html>

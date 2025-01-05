@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Management Class | Vanguard Hub</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles/manage_class_month.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles/sidebars.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+  </head>
+  <body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <!-- Sidebar Header -->
+        <header class="sidebar-header">
+          <a href="#" class="header-logo">
+            <img src="{{ url_for('static', filename= 'images/logoVG.svg') }}" alt="VanguardHub" />
+          </a>
+          <button class="toggler sidebar-toggler">
+            <span class="material-symbols-rounded">chevron_left</span>
+          </button>
+        </header>
+        <nav class="sidebar-nav">
+          <!-- Primary Top Navigation -->
+          <ul class="nav-list primary-nav">
+            <li class="nav-item">
+              <a href="{{ url_for('login.dashboard')}}" class="nav-link">
+                <span class="nav-icon material-symbols-rounded">dashboard</span>
+                <span class="nav-label">Dashboard</span>
+              </a>
+              <span class="nav-tooltip">Dashboard</span>
+            </li>
+            <li class="nav-item">
+              <a href="{{ url_for('courses.courses')}}" class="nav-link">
+                <span class="nav-icon material-symbols-rounded">event_note</span>
+                <span class="nav-label">Courses</span>
+              </a>
+              <span class="nav-tooltip">Courses</span>
+            </li>
+            <li class="nav-item">
+              <a href="{{ url_for('scheduling.scheduling')}}" class="nav-link">
+                <span class="nav-icon material-symbols-rounded"
+                  >calendar_month</span
+                >
+                <span class="nav-label">Class Schedule</span>
+              </a>
+              <span class="nav-tooltip">Class Schedule</span>
+            </li>
+            <li class="nav-item">
+              <a href="{{ url_for('management_class.management_class')}}" class="nav-link">
+                <span class="nav-icon material-symbols-rounded">analytics</span>
+                <span class="nav-label">Management Class</span>
+              </a>
+              <span class="nav-tooltip">Management Class</span>
+            </li>
+            <li class="nav-item">
+              <a href="{{ url_for('members.members')}}" class="nav-link">
+                <span class="nav-icon material-symbols-rounded">person</span>
+                <span class="nav-label">Members</span>
+              </a>
+              <span class="nav-tooltip">Members</span>
+            </li>
+            <li class="nav-item">
+              <a href="{{ url_for('team_project.team_project')}}" class="nav-link">
+                <span class="nav-icon material-symbols-rounded">group</span>
+                <span class="nav-label">Team Project</span>
+              </a>
+              <span class="nav-tooltip">Team Project</span>
+            </li>
+          </ul>
+      
+          <!-- Secondary Bottom Navigation -->
+          <ul class="nav-list secondary-nav">
+            <li class="nav-item">
+            </li>
+            <li class="nav-item">
+              <a href="{{ url_for('login.logout')}}" class="nav-link">
+                <span class="nav-icon material-symbols-rounded">logout</span>
+                <span class="nav-label">Logout</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+    </aside>
+
+    <!-- Table Track Kas Kelas -->
+    <div class="container">
+      <div class="header">
+        <h1>Vanguard's Finance</h1>
+        <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a href="{{ url_for('settings.settings') }}" class="nav-link">
+                <span class="nav-icon material-symbols-rounded">settings</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ url_for('activity_feed.activity') }}" class="nav-link">
+                <span class="nav-icon material-symbols-rounded">notifications</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <div class="media align-items-center">
+                <span class="avatar avatar-sm rounded-circle">
+                  <a href="{{ url_for('profile.profile', nim=session['numid']) }}">
+                    <img alt="Image placeholder" src="{{ url_for('static', filename='uploads/' + session['numid'] + '_profile.jpg') }}">
+                  </a>
+                </span>
+              </div>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="table">
+        <table id="kasTable">
+          <thead>
+            <tr>
+              <th>Nama</th>
+              <th>Status Pembayaran</th>
+              <th>Nominal (Rp)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Nama siswa akan ditambahkan oleh JavaScript -->
+          </tbody>
+        </table>
+        <div class="total">
+          <p>Total Pendapatan Kas: Rp <span id="totalKas">0</span></p>
+        </div>
+        <button onclick="generatePDFReport()">Unduh Laporan PDF</button>
+        <button id="saveChanges">Save</button>
+      </div>
+
+    </div>
+  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+
+  <script src="{{url_for('static', filename='scripts/sidebars.js')}}"></script>
+  <script src="{{url_for('static', filename='scripts/management_class.js')}}"></script>
+</html>

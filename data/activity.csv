@@ -1,0 +1,5 @@
+Timestamp;NIM;Username;Type;Description;URL;Badge
+2025-01-04 09:26:55;24031554082;Arujovu;Profile Change;has add a new link to their profile;/dashboard/24031554082;fa-solid fa-pen
+2025-01-04 09:45:12;24031554082;Arujovu;Event Change;has added a new event;/dashboard/scheduling;fa-solid fa-calendar-days
+2025-01-04 09:45:44;24031554082;Arujovu;Event Change;has updated an event;/dashboard/scheduling;fa-solid fa-calendar-days
+2025-01-04 22:22:25;24031554082;Arujovu;Profile Change;has changed their {change_description};/dashboard/24031554082;fa-solid fa-pen
