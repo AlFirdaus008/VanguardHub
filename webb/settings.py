@@ -9,9 +9,6 @@ settings_bp = Blueprint('settings', __name__)
 file_path_users = os.path.join(os.getcwd(), 'VanguardHub', 'webb', 'data', 'users.csv')
 file_path_profile = os.path.join(os.getcwd(), 'VanguardHub', 'webb', 'data', 'profile.csv')
 
-# Helper function to update email in CSV
-import csv
-import os
 
 def update_email_in_csv(current_email, new_email):
     updated = False

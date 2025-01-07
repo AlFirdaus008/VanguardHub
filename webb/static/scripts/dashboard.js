@@ -55,3 +55,9 @@ function loadBalance() {
   });
   balanceDisplay.textContent = `Saldo: ${formatCurrency(balance)}`;
 }
+
+const currentDate = new Date();
+const option = { year: "numeric", month: "long", day: "numeric" };
+const formattedDate = currentDate.toLocaleDateString("id-ID", option);
+
+document.getElementById("current-date").textContent = formattedDate;

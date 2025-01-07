@@ -167,9 +167,9 @@ def change_profile():
             change_description += f", and {changes[-1]}"
         else:
             change_description = changes[0]
-        log_activity(numid, nickname, 'Profile Change', 'has changed their {change_description}')
+        log_activity(numid, nickname, 'Profile Change', f'has changed their {change_description}')
     else:
-        log_activity(numid, nickname, 'Profile Change', 'updated their profile with no specific changes')
+        log_activity(numid, nickname, 'Profile Change', 'updated their profile')
 
     return redirect(url_for('profile.profile', nim=numid))  # Redirect back to the profile page
 
@@ -233,7 +233,6 @@ def change_photo():
     numid = session['numid'] 
     user_data = get_user_profile(numid)
     nickname = user_data.get('Nickname') 
-    log_activity(numid, nickname, 'Profile Change', 'has changed their profile photo')
     return redirect(url_for('profile.profile', nim=numid))  
 
 @profile_bp.route('/profile/add_link', methods=['POST'])
