@@ -12,8 +12,8 @@ from .activity import log_activity
 
 profile_bp = Blueprint('profile', __name__)
 
-file_path_users = os.path.join(os.getcwd(), 'VanguardHub', 'webb','data', 'users.csv')
-file_path_profile = os.path.join(os.getcwd(), 'VanguardHub', 'webb','data', 'profile.csv')
+file_path_users = os.path.join(os.getcwd(), 'VanguardHub', 'webb','static', 'data', 'users.csv')
+file_path_profile = os.path.join(os.getcwd(), 'VanguardHub', 'webb','static', 'data', 'profile.csv')
 
 @profile_bp.route('/<nim>')
 def profile(nim):

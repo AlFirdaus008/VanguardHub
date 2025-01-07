@@ -6,7 +6,7 @@ main_members = Blueprint('members', __name__)
 
 @main_members.route('/')
 def home():
-    file_path_members = os.path.join(os.getcwd(), 'VanguardHub', 'webb','data', 'members.csv')
+    file_path_members = os.path.join(os.getcwd(), 'VanguardHub', 'webb','static', 'data', 'members.csv')
     members = []
     with open(file_path_members, mode='r') as file:
         csv_reader = csv.DictReader(file)
@@ -36,7 +36,7 @@ def management_class():
 
 @main_members.route('/members.html')
 def members():
-    file_path_members = os.path.join(os.getcwd(), 'VanguardHub', 'webb','data', 'members.csv')
+    file_path_members = os.path.join(os.getcwd(), 'VanguardHub', 'webb','static', 'data', 'members.csv')
     members = []
     with open(file_path_members, mode='r') as file:
         csv_reader = csv.DictReader(file, delimiter=';')

@@ -5,8 +5,8 @@ from datetime import datetime, timedelta
 
 
 activity_feed_bp = Blueprint('activity_feed', __name__)
-file_path_activity = os.path.join(os.getcwd(), 'VanguardHub', 'webb', 'data', 'activity.csv')
-file_path_profile = os.path.join(os.getcwd(), 'VanguardHub', 'webb', 'data', 'profile.csv')
+file_path_activity = os.path.join(os.getcwd(), 'VanguardHub', 'webb', 'static', 'data', 'activity.csv')
+file_path_profile = os.path.join(os.getcwd(), 'VanguardHub', 'webb', 'static', 'data', 'profile.csv')
 
 @activity_feed_bp.route('/activity_feed')
 def activity():

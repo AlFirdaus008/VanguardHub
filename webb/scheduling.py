@@ -28,7 +28,7 @@ SCOPES = [
     'https://www.googleapis.com/auth/userinfo.profile'
 ]
 
-file_path_users = os.path.join(os.getcwd(), 'VanguardHub', 'webb', 'data', 'users.csv')
+file_path_users = os.path.join(os.getcwd(), 'VanguardHub', 'webb', 'static', 'data', 'users.csv')
 
 token_path = os.path.join(os.getcwd(), 'VanguardHub', 'webb','config', 'token.pickle')
 
