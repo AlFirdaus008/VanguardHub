@@ -131,7 +131,7 @@ def dashboard():
 
 # Function to save user to CSV (signup)
 def save_user_to_csv(numid, email, role, hashed_password):
-    
+    calendar_id = '744c55ae571b4d19f7c11745ace2e0715de978588e8b6ef0b8bfb083a9cf2e38@group.calendar.google.com'
     try:
         # Save user data to users.csv
         file_exists = os.path.exists(file_path_users)
@@ -141,7 +141,7 @@ def save_user_to_csv(numid, email, role, hashed_password):
                 writer.writerow(['numid', 'email', 'role', 'hashed_password'])  # Write header
         with open(file_path_users, mode='a', newline='', encoding='utf-8') as file:
             writer = csv.writer(file, delimiter=";")
-            writer.writerow([numid, email, role, hashed_password])  # Save numid and hashed password
+            writer.writerow([numid, email, role, hashed_password, calendar_id])  # Save numid and hashed password
         
         # Now update the email in file_path_profile based on numid (which matches NIM)
         updated_profiles = []

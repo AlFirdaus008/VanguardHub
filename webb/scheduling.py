@@ -134,9 +134,6 @@ def scheduling():
     # Get the calendar ID from session (this should be set when a new calendar is created)
     calendar_id = get_calendar_id_from_csv(file_path_users, numid)
 
-    if not calendar_id:
-        return redirect(url_for('scheduling.create_calendar'))  # Redirects to /create_calendar if no calendar ID is found
-    print('no use of creating anymore')
 
 
     # Fetch events from the specified calendar
