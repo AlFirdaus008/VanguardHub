@@ -2,11 +2,11 @@ document.addEventListener("DOMContentLoaded", function () {
   const csvUrl = "/static/data/members.csv";
   let groups = [
     [3, 7, 15],
-    [7, 17, 4],
-    [12, 13, 9],
-    [11, 16, 18],
-    [18, 14, 5],
-    [6, 10, 2],
+    [14, 18, 5],
+    [19, 15, 11],
+    [9, 12, 13],
+    [6, 2, 10],
+    [8, 4, 17],
   ];
 
   fetch(csvUrl)
