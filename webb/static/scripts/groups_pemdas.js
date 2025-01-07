@@ -69,8 +69,7 @@ function populateTable(data, groups) {
 
         const nameCell = document.createElement("td");
         const gender = row[7].trim().toLowerCase();
-        const imageSrc =
-          gender === "male" ? "/static/boy.jpg" : "/static/girl.jpg";
+        const imageSrc = `/static/uploads/${row[3]}_profile.jpg`;
         nameCell.innerHTML = `<img src="${imageSrc}" alt="${gender}"><a class="name-link" href="${row[5]}" target="_blank"><strong>${row[1]}</strong></a>`;
 
         const birthdayCell = document.createElement("td");
