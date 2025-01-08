@@ -10,6 +10,10 @@ from .activity import log_activity
 from .profile import get_user_profile
 from dotenv import load_dotenv
 
+from collections import defaultdict 
+from datetime import datetime 
+from googleapiclient.discovery import build 
+
 scheduling_bp = Blueprint('scheduling', __name__)
 
 # Specify the path to the .env file
@@ -526,3 +530,37 @@ def get_calendar_id_from_csv(file_path, numid):
             if row['numid'] == numid:
                 return row.get('calendar_id')  # Return the calendar_id if found
     return None  # Return None if no matching user or no calendar_id is found
+ 
+def get_month_with_most_events(numid, file_path_users, time_min='2024-01-01T00:00:00Z', time_max='2024-12-31T23:59:59Z'): 
+    credentials = get_credentials(numid) 
+ 
+    if not credentials or credentials.expired: 
+        raise Exception("User not authenticated or credentials expired.") 
+ 
+    service = build('calendar', 'v3', credentials=credentials) 
+ 
+    events = service.events().list( 
+        calendarId=get_calendar_id_from_csv(file_path_users, numid), 
+        timeMin=time_min, 
+        timeMax=time_max, 
+        singleEvents=True, 
+        orderBy='startTime' 
+    ).execute().get('items', []) 
+ 
+    if not events: 
+        raise Exception("No events found.") 
+ 
+    events_per_month = defaultdict(int) 
+ 
+    for event in events: 
+        start_datetime = event['start'].get('dateTime', event['start'].get('date')) 
+        event_date = datetime.fromisoformat(start_datetime) 
+ 
+        year_month = event_date.strftime('%Y-%m') 
+ 
+        events_per_month[year_month] += 1 
+ 
+    max_month = max(events_per_month, key=events_per_month.get) 
+    max_count = events_per_month[max_month] 
+ 
+    return max_month, max_count

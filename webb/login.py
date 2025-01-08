@@ -94,7 +94,7 @@ def login():
 
     return render_template('login.html')
 
-@login_bp.route('/confirm_email/<token>')
+@login_bp.route('/confirm_email/<en>')
 def confirm_email(token):
     s = URLSafeTimedSerializer(current_app.config['SECRET_KEY'])
     
