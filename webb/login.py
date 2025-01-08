@@ -7,6 +7,7 @@ import csv
 import os
 import re
 from . import mail
+from .scheduling import get_month_with_most_events
 
 login_bp = Blueprint('login', __name__)
 
