@@ -128,6 +128,7 @@ def dashboard():
     max_month, max_events = get_month_with_most_events(numid, file_path_users)
     if 'numid' not in session:
         return redirect(url_for('login.login'))
+    print(max_month, max_events, flush=True)
     return render_template('dashboard.html', user=session['numid'], month = max_month, event = max_events)
 
 @login_bp.route('/logout')
