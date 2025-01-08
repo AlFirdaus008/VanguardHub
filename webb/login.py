@@ -7,7 +7,7 @@ import csv
 import os
 import re
 from . import mail
-from .scheduling import get_month_with_most_events
+from .scheduling import get_month_with_most_events, get_credentials
 
 login_bp = Blueprint('login', __name__)
 
@@ -123,6 +123,7 @@ def confirm_email(token):
 
 @login_bp.route('/dashboard')
 def dashboard():
+    get_credentials()
     numid = session['numid']
     max_month, max_events = get_month_with_most_events(numid, file_path_users)
     print(max_month, max_events)
