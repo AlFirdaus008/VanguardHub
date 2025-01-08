@@ -533,7 +533,7 @@ def get_calendar_id_from_csv(file_path, numid):
                 return row.get('calendar_id')  # Return the calendar_id if found
     return None  # Return None if no matching user or no calendar_id is found
  
-def get_month_with_most_events(numid, file_path_users, time_min='2024-01-01T00:00:00Z', time_max='2024-12-31T23:59:59Z'): 
+def get_month_with_most_events(numid, file_path_users, time_min='2024-01-01T00:00:00Z', time_max='2025-12-31T23:59:59Z'): 
     credentials = get_credentials() 
  
     if not credentials or credentials.expired: 
