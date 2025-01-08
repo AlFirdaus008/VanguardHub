@@ -548,7 +548,7 @@ def get_month_with_most_events(numid, file_path_users, time_min='2024-01-01T00:0
         maxResults=20,
         singleEvents=True, 
         orderBy='startTime' 
-    ).execute().get('items', []).isoformat()
+    ).execute().get('items', [])
     print(get_calendar_id_from_csv(file_path_users, numid), flush=True)
     print('event:', events, flush=True)
     print("calendarId:", get_calendar_id_from_csv(file_path_users, numid))
@@ -561,7 +561,7 @@ def get_month_with_most_events(numid, file_path_users, time_min='2024-01-01T00:0
     events_per_month = defaultdict(int) 
  
     for event in events: 
-        start_datetime = event['start'].get('dateTime', event['start'].get('date')) 
+        start_datetime = event['start'].get('dateTime', event['start'].get('date')).replace("Z", "+00:00")
         event_date = datetime.fromisoformat(start_datetime) 
  
         year_month = event_date.strftime('%Y-%m') 
