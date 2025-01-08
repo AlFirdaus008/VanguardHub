@@ -129,7 +129,7 @@ def dashboard():
     if 'numid' not in session:
         return redirect(url_for('login.login'))
     print('tes', max_month, max_events, flush=True)
-    return render_template('dashboard.html', user=session['numid'], month = max_month, event = max_events)
+    return render_template('dashboard.html', user=session['numid'], month = max_month, events = max_events)
 
 @login_bp.route('/logout')
 def logout():
