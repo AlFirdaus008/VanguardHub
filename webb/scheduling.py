@@ -548,7 +548,7 @@ def get_month_with_most_events(numid, file_path_users, time_min='2024-01-01T00:0
         maxResults=20,
         singleEvents=True, 
         orderBy='startTime' 
-    ).execute().get('items', []) 
+    ).execute().get('items', []).isoformat()
     print(get_calendar_id_from_csv(file_path_users, numid), flush=True)
     print('event:', events, flush=True)
     print("calendarId:", get_calendar_id_from_csv(file_path_users, numid))
