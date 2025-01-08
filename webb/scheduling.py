@@ -151,13 +151,15 @@ def scheduling():
 
     # Check if the user can edit the calendar (based on role)
     can_edit_shared = session.get('user_role') != 'member'
-     
+    max_month, max_events = get_month_with_most_events(numid, file_path_users)
 
     # Render the calendar template
     return render_template(
         'calendar.html',
         shared_events=events,  # Using the new calendar's events
         can_edit_shared=can_edit_shared,  # Check if user can edit
+        month = max_events,
+        events = max_month
     )
 
 

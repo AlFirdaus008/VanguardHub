@@ -123,13 +123,9 @@ def confirm_email(token):
 
 @login_bp.route('/dashboard')
 def dashboard():
-    get_credentials()
-    numid = session['numid']
-    max_month, max_events = get_month_with_most_events(numid, file_path_users)
-    print(max_month, max_events)
     if 'numid' not in session:
         return redirect(url_for('login.login'))
-    return render_template('dashboard.html', user=session['numid'], month = max_month, events = max_events)
+    return render_template('dashboard.html', user=session['numid'])
 
 @login_bp.route('/logout')
 def logout():
