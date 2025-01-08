@@ -543,8 +543,8 @@ def get_month_with_most_events(numid, file_path_users, time_min='2024-01-01T00:0
 
     events = service.events().list( 
         calendarId=get_calendar_id_from_csv(file_path_users, numid), 
-        timeMin=time_min, 
-        timeMax=time_max, 
+        timeMin="2024-01-01T00:00:00Z", 
+        timeMax="2025-12-31T23:59:59Z", 
         singleEvents=True, 
         orderBy='startTime' 
     ).execute().get('items', []) 
@@ -571,7 +571,4 @@ def get_month_with_most_events(numid, file_path_users, time_min='2024-01-01T00:0
     max_count = events_per_month[max_month] 
  
     return max_month, max_count
-
-from datetime import datetime, timezone
-import pytz
 
