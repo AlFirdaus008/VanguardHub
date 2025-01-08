@@ -544,8 +544,8 @@ def get_month_with_most_events(numid, file_path_users, time_min='2024-01-01T00:0
     end_time = normalize_to_utc(time_max, 'Etc/GMT+7')
     events = service.events().list( 
         calendarId=get_calendar_id_from_csv(file_path_users, numid), 
-        timeMin=time_min, 
-        timeMax=time_max, 
+        timeMin=start_time, 
+        timeMax=end_time, 
         singleEvents=True, 
         orderBy='startTime' 
     ).execute().get('items', []) 
