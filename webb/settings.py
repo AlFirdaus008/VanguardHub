@@ -83,7 +83,7 @@ def change_email():
     # Simple email validation
     if not current_email or not new_email:
         flash('Both fields are required.', 'warning')
-        return redirect(url_for('settings.settings_page'))
+        return redirect(url_for('settings.settings'))
 
     # Update email in CSV
     if update_email_in_csv(current_email, new_email):
@@ -91,7 +91,7 @@ def change_email():
     else:
         flash('Error: Current email not found.', 'danger')
 
-    return redirect(url_for('settings.settings_page'))
+    return redirect(url_for('settings.settings'))
 
 # Change password route
 @settings_bp.route('/change_password', methods=['POST'])
@@ -103,11 +103,11 @@ def change_password():
     # Password validation rule
     if not new_password or not re.fullmatch(r'^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$', new_password):
         flash('Password must be at least 8 characters long, include at least one capital letter, one number, and one special character.', 'danger')
-        return redirect(url_for('settings.settings_page'))
+        return redirect(url_for('settings.settings'))
 
     if new_password != confirm_password:
         flash('Passwords do not match.', 'warning')
-        return redirect(url_for('settings.settings_page'))
+        return redirect(url_for('settings.settings'))
 
     # Check current password and update new password
     email = request.form.get('email')  # Assuming you track the current user's email somehow (session or passed in the form)
@@ -124,7 +124,7 @@ def change_password():
     else:
         flash('Current password is incorrect.', 'danger')
 
-    return redirect(url_for('settings.settings_page'))
+    return redirect(url_for('settings.settings'))
 
 # Settings page route
 @settings_bp.route('/settings')
