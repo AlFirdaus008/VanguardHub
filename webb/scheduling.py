@@ -548,8 +548,7 @@ def get_month_with_most_events(numid, file_path_users, time_min='2024-01-01T00:0
         singleEvents=True, 
         orderBy='startTime' 
     ).execute().get('items', []) 
-    calendarId=get_calendar_id_from_csv(file_path_users, numid)
-    print(calendarId)
+    print(get_calendar_id_from_csv(file_path_users, numid), flush=True)
     if not events: 
         raise Exception("No events found.") 
  
