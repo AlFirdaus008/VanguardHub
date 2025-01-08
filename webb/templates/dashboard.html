@@ -121,7 +121,12 @@
     <h1>Welcome, {{ user }}!</h1>
     <!-- Username placeholder from backend -->
     <p>Today is : <span id="current-date"></span></p>
-
+    {% if month and count %} 
+        <p>The month with the most events is: <strong>{{ month }}</strong></p> 
+        <p>Total events in {{ month }}: <strong>{{ count }}</strong></p> 
+    {% else %} 
+        <p>No data available.</p> 
+    {% endif %}
     <div class="container-dashboard">
       <!-- TABLE TUGAS KELAS -->
       <table>
