@@ -124,7 +124,7 @@ def confirm_email(token):
 @login_bp.route('/dashboard')
 def dashboard():
     numid = session['numid']
-    print(numid, flush=True)
+    print('numid:', numid, flush=True)
     max_month, max_events = get_month_with_most_events(numid, file_path_users)
     if 'numid' not in session:
         return redirect(url_for('login.login'))
