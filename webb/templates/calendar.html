@@ -125,7 +125,16 @@
 
     <!-- Calendar Container -->
     <div id="calendar-container"></div>
-
+    <div>
+      <p>Today is : <span id="current-date"></span></p>
+      <p>Number of events: <strong>{{ num_events }}</strong></p>
+      {% if month and events %} 
+      <p>The month with the most events is: <strong>{{ month }}</strong></p> 
+      <p>Total events in {{ month }}: <strong>{{ events }}</strong></p> 
+      {% else %} 
+          <p>No data available.</p> 
+      {% endif %}
+    </div>
     {% if can_edit_shared %}
     <button class="btn btn-primary mt-4" id="add-event">Add Event</button>
     {% else %}
