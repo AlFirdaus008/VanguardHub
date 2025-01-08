@@ -533,27 +533,26 @@ def get_calendar_id_from_csv(file_path, numid):
                 return row.get('calendar_id')  # Return the calendar_id if found
     return None  # Return None if no matching user or no calendar_id is found
  
-def get_month_with_most_events(numid, file_path_users, time_min='2024-01-01T00:00:00', time_max='2025-12-31T23:59:59'): 
+def get_month_with_most_events(numid, file_path_users, time_min='2024-01-01T00:00:00Z', time_max='2025-12-31T23:59:59Z'): 
     credentials = get_credentials() 
  
     if not credentials or credentials.expired: 
         raise Exception("User not authenticated or credentials expired.") 
  
     service = build('calendar', 'v3', credentials=credentials) 
-    start_time = normalize_to_utc(time_min, 'Etc/GMT+7')
-    end_time = normalize_to_utc(time_max, 'Etc/GMT+7')
+
     events = service.events().list( 
         calendarId=get_calendar_id_from_csv(file_path_users, numid), 
-        timeMin=start_time, 
-        timeMax=end_time, 
+        timeMin=time_min, 
+        timeMax=time_max, 
         singleEvents=True, 
         orderBy='startTime' 
     ).execute().get('items', []) 
     print(get_calendar_id_from_csv(file_path_users, numid), flush=True)
     print('event:', events, flush=True)
     print("calendarId:", get_calendar_id_from_csv(file_path_users, numid))
-    print("timeMin:", start_time, flush=True)
-    print("timeMax:", end_time, flush=True)
+    print("timeMin:", time_min, flush=True)
+    print("timeMax:", time_max, flush=True)
 
     if not events: 
         raise Exception("No events found.") 
@@ -576,13 +575,3 @@ def get_month_with_most_events(numid, file_path_users, time_min='2024-01-01T00:0
 from datetime import datetime, timezone
 import pytz
 
-def normalize_to_utc(date_str, tz_name):
-    local_tz = pytz.timezone(tz_name)
-    local_dt = local_tz.localize(datetime.fromisoformat(date_str))
-    utc_dt = local_dt.astimezone(pytz.utc)
-    return utc_dt.isoformat() + 'Z'
-
-# Example usage
-start_time = '2025-01-01T17:00:00'  # Without 'Z'
-normalized_start = normalize_to_utc(start_time, 'Etc/GMT+7')
-print("Normalized Start Time:", normalized_start)
